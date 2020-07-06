@@ -1,6 +1,6 @@
 {
-  "name": "Bento Starter",
-  "short_name": "Bento",
+  "name": "runedex-web",
+  "short_name": "runedex-mob",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
