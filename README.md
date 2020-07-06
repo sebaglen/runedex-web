@@ -1,2 +1,2 @@
 # runedex-web
-Web app for RuneDex
+Web app for RuneDex :) 
