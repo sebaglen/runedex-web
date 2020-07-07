@@ -9,3 +9,22 @@ $navbar-height: 3.6rem;
 $navbar-color: #fff;
 $navbar-offline-color: #333;
 $navbar-link-color: #2c3e50;
+
+// Color palette 
+$dark-blue: #264653;
+$green: #2a9d8f;
+$yellow: #e9c46a;
+$light-orange: #f4a261;
+$dark-orange: #e76f51;
+
+
+
+.flex-row {
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;   
+}
