@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <nav-bar></nav-bar>
+    <side-menu v-if="this.isMobile"></side-menu>
     <div class="main-wrapper">
       <router-view />
     </div>
@@ -21,24 +22,51 @@
 </template>
 <script>
 import NavBar from '@/components/NavBar'
+import SideMenu from '@/components/SideMenu'
 import NewContentAvailableToastr from '@/components/NewContentAvailableToastr'
 import AppleAddToHomeScreenModal from '@/components/AppleAddToHomeScreenModal'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-  components: { NavBar, NewContentAvailableToastr, AppleAddToHomeScreenModal },
+  components: { NavBar, SideMenu, NewContentAvailableToastr, AppleAddToHomeScreenModal },
   computed: {
     ...mapGetters('app', ['newContentAvailable']),
-    ...mapState('app', ['showAddToHomeScreenModalForApple', 'refreshingApp'])
+    ...mapState('app', ['showAddToHomeScreenModalForApple', 'refreshingApp']),
+    isMobile() {
+      if (this.window.width <= 750) {
+        return false;
+      }
+      return true;
+    }
   },
-  methods: mapActions('app', [
-    'closeAddToHomeScreenModalForApple',
-    'serviceWorkerSkipWaiting'
-  ])
+  data() {
+    return {
+      window: {
+        width: 0,
+      }
+    }
+  },
+  methods: {
+    ...mapActions('app', [
+      'closeAddToHomeScreenModalForApple',
+      'serviceWorkerSkipWaiting'
+    ]),
+    handleResize() {
+      this.window.width = window.innerWidth;
+    }
+  },
+  created() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize);
+  },
 }
 </script>
 
 <style lang="scss">
+@import '@/theme/variables.scss';
 body {
   margin: 0;
 
@@ -53,7 +81,15 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
-    color: #2c3e50;
+    height: 100vh;
+
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;   
 
     .new-content-available-toastr {
       position: absolute;
