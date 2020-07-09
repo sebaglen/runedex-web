@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="character-panel">
     <character-header></character-header>
   </div>
 </template>
@@ -14,4 +14,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
+.character-panel {
+  background-color: lightblue;
+  width: 100%;
+  
+}
 </style>

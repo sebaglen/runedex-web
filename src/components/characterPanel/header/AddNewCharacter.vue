@@ -2,20 +2,17 @@
   <div>
     <div class="character-wrapper">
       <img
-          class="player-icon"
-          src="@/assets/img/person.png"
+          class="plus-icon"
+          src="@/assets/img/add.png"
         />
     </div>
-    <div class="character-name">{{characterName}}</div>
+    <div class="character-name">Add new</div>
   </div>
   
 </template>
 
 <script>
 export default {
-  props: {
-    characterName: String,
-  }
 }
 </script>
 
@@ -34,8 +31,9 @@ export default {
   width: 100%;
   text-align: center;
 }
-.player-icon {
-  width: 80px;
-  height: 80px;
+.plus-icon {
+  padding-top: 25px;
+  width: 30px;
+  height: 30px;
 }
 </style>
