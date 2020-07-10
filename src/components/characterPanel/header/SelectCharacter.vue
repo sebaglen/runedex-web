@@ -25,7 +25,7 @@ export default {
   width: 80px;
   height: 80px;
   border-radius: 7px;
-  background-color: $green;
+  background-color: $brown;
   text-align: center;
   font-size: 0.8em;
   cursor: pointer;

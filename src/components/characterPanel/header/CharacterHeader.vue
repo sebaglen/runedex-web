@@ -1,17 +1,17 @@
 <template>
   <div class="flex-row">
-    <character class="char-item" :characterName="`Iron Synkie`"></character>
-    <character class="char-item" :characterName="`Lil Synkie`"></character>
+    <select-character class="char-item" :characterName="`Iron Synkie`"></select-character>
+    <select-character class="char-item" :characterName="`Lil Synkie`"></select-character>
     <add-new-character class="char-item"></add-new-character>
   </div>
 </template>
 
 <script>
-import Character from '@/components/characterPanel/header/Character'
+import SelectCharacter from '@/components/characterPanel/header/SelectCharacter'
 import AddNewCharacter from '@/components/characterPanel/header/AddNewCharacter'
 
 export default {
-  components: { Character, AddNewCharacter }
+  components: { SelectCharacter, AddNewCharacter }
 }
 </script>
 

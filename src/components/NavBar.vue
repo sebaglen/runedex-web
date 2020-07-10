@@ -145,7 +145,7 @@ export default {
 
         @mixin activatedLink() {
           margin-bottom: -2px;
-          border-bottom: 2px solid $vue-color;
+          border-bottom: 2px solid $dark-brown;
         }
 
         .router-link-active {
