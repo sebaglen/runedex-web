@@ -51,6 +51,18 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "client-chunk-products" */ '@/views/Overview.vue')
     },
+    {
+      path: '/news',
+      name: 'news',
+      component: () =>
+        import(/* webpackChunkName: "client-chunk-products" */ '@/views/News.vue')
+    },
+    {
+      path: '/watchlist',
+      name: 'watchlist',
+      component: () =>
+        import(/* webpackChunkName: "client-chunk-products" */ '@/views/Watchlist.vue')
+    },
     { path: '*', redirect: '/home' }
   ]
 })
