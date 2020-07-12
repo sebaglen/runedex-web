@@ -1,17 +1,25 @@
 <template>
   <div class="character-panel flex-column">
-    <select-character class="char-item" :characterName="`Iron Synkie`"></select-character>
-    <select-character class="char-item" :characterName="`Lil Synkie`"></select-character>
-    <add-new-character class="char-item"></add-new-character> 
+    <select-character
+      v-for="account in accounts"
+      :key="account.id"
+      class="char-item"
+      :character-name="account.id"
+    ></select-character>
+    <add-new-character class="char-item"></add-new-character>
   </div>
 </template>
 
 <script>
 import SelectCharacter from '@/components/characterPanel/header/SelectCharacter'
 import AddNewCharacter from '@/components/characterPanel/header/AddNewCharacter'
+import { mapState } from 'vuex'
 
 export default {
   components: { SelectCharacter, AddNewCharacter },
+  computed: {
+    ...mapState('accounts', ['accounts'])
+  }
 }
 </script>
 
