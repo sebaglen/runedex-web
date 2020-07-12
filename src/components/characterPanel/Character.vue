@@ -4,15 +4,15 @@
       placeholder="Account name..."
       class="account-name-input"
       type="text"
-      :value="accountNameToAdd"
-      @input="setAccountNameToAdd($event.target.value)"
-      @keypress.enter="triggerAddAccount"
+      :value="accountNameToRegister"
+      @input="setAccountNameToRegister($event.target.value)"
+      @keypress.enter="triggerRegisterAccountAction"
     />
     <button
-      :class="{ disabled: accountCreationPending }"
-      :disabled="!!accountCreationPending"
+      :class="{ disabled: accountRegistrationPending }"
+      :disabled="!!accountRegistrationPending"
       class="add-account-btn"
-      @click="triggerAddAccount"
+      @click="triggerRegisterAccountAction"
     >
       Add account
     </button>
@@ -21,34 +21,20 @@
 </template>
 
 <script>
-import firebase from 'firebase/app'
-import 'firebase/functions'
+import { mapMutations, mapState, mapActions } from 'vuex'
 
 export default {
-  data() {
-    return {
-      accountNameToAdd: '',
-      accountCreationPending: false,
-      pin: ''
-    }
+  computed: {
+    ...mapState('accounts', [
+      'accountNameToRegister',
+      'accountRegistrationPending',
+      'pin'
+    ]),
+    ...mapState('authentication', ['pin'])
   },
   methods: {
-    setAccountNameToAdd(input) {
-      this.$data.accountNameToAdd = input
-    },
-    async triggerAddAccount() {
-      this.$data.accountCreationPending = true
-      firebase
-        .functions()
-        .httpsCallable('registerAccount')({
-          accountName: this.$data.accountNameToAdd
-        })
-        .then(result => {
-          const randomPin = result.data.pin
-          this.$data.pin = randomPin
-          this.$data.accountCreationPending = false
-        })
-    }
+    ...mapMutations('accounts', ['setAccountNameToRegister']),
+    ...mapActions('accounts', ['triggerRegisterAccountAction'])
   }
 }
 </script>
