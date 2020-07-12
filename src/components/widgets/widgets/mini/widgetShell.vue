@@ -1,13 +1,24 @@
 <template>
-    <div class="widget">
-      {{type}}
-    </div>
+  <div class="widget">
+    <component :is="type" :unique-id="uniqueId" />
+  </div>
 </template>
 
 <script>
+import { getWidget, miniWidgetComponents } from '../widgetUtils'
+import addNewWidget from './addNewWidget'
+
 export default {
+  components: {
+    ...miniWidgetComponents,
+    addnew: addNewWidget
+  },
   props: {
-    type: String
+    type: String,
+    uniqueId: Number
+  },
+  methods: {
+    getWidget
   }
 }
 </script>
@@ -17,6 +28,8 @@ export default {
 .widget {
   min-width: 140px;
   min-height: 140px;
+  width: 140px;
+  overflow: hidden;
   border-radius: 10px;
   background-color: $light;
   text-align: center;
