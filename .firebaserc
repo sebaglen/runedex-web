@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "bento-starter",
-    "runedex": "runedex-77a4c"
+    "default": "runedex-77a4c"
   }
 }
