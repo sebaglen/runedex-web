@@ -25,7 +25,7 @@ export default {
   width: 80px;
   height: 80px;
   border-radius: 7px;
-  background-color: $brown;
+  background-color: $neutral;
   text-align: center;
   font-size: 0.8em;
   cursor: pointer;
@@ -33,6 +33,7 @@ export default {
 .character-name {
   width: 100%;
   text-align: center;
+  color: $lighter;
 }
 .player-icon {
   width: 80px;

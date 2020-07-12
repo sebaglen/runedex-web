@@ -1,10 +1,22 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
-    <side-menu v-if="this.isMobile"></side-menu>
-    <div class="main-wrapper">
-      <router-view />
+    <div v-if="this.isMobile">
+      <mobile-nav-bar></mobile-nav-bar>
+      <div class="router">
+        <router-view  />
+      </div>
     </div>
+    <div v-else>
+      <nav-bar></nav-bar>
+      <div class="mobile-padding"/>
+      <div class="router">
+        <router-view  />
+      </div>
+    </div>
+
+
+
+
 
     <new-content-available-toastr
       v-if="newContentAvailable"
@@ -22,21 +34,21 @@
 </template>
 <script>
 import NavBar from '@/components/NavBar'
-import SideMenu from '@/components/SideMenu'
+import MobileNavBar from '@/components/MobileNavBar'
 import NewContentAvailableToastr from '@/components/NewContentAvailableToastr'
 import AppleAddToHomeScreenModal from '@/components/AppleAddToHomeScreenModal'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-  components: { NavBar, SideMenu, NewContentAvailableToastr, AppleAddToHomeScreenModal },
+  components: { NavBar, MobileNavBar, NewContentAvailableToastr, AppleAddToHomeScreenModal },
   computed: {
     ...mapGetters('app', ['newContentAvailable']),
     ...mapState('app', ['showAddToHomeScreenModalForApple', 'refreshingApp']),
     isMobile() {
       if (this.window.width <= 750) {
-        return false;
+        return true;
       }
-      return true;
+      return false;
     }
   },
   data() {
@@ -80,7 +92,6 @@ body {
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
     height: 100vh;
 
     -ms-box-orient: horizontal;
@@ -90,6 +101,15 @@ body {
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;   
+
+    .mobile-padding {
+      height: $navbar-height;
+      width: 100%;
+    }
+
+    .router {
+      height: calc(100% - 60px); // should be $navbar-height bue doesnt work for some reason ????
+    }
 
     .new-content-available-toastr {
       position: absolute;
@@ -107,11 +127,6 @@ body {
       width: fit-content;
       margin: auto;
       z-index: 1000;
-    }
-
-    .main-wrapper {
-      padding-top: $navbar-height;
-      width: 100%;
     }
   }
 }

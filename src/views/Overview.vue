@@ -1,23 +1,22 @@
 <template>
-  <div class="page-wrapper">
-    <character-panel class="char-panel"></character-panel>
+  <div class="page-wrapper flex-row">
+    <character-panel></character-panel>
+    <widgets></widgets>
   </div>
 </template>
 
 <script>
 import CharacterPanel from '@/components/characterPanel/CharacterPanel'
+import Widgets from '@/components/widgets/Widgets'
 
 export default {
-  components: { CharacterPanel },
+  components: { CharacterPanel, Widgets },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
-
-.account-action-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.page-wrapper {
+  height: 100%;
 }
 </style>

@@ -12,17 +12,6 @@
             <news-router-item></news-router-item>
           </router-link>
         </div>
-        <div v-if="!isUserLoggedIn && networkOnLine" class="nav-item">
-          <router-link to="/login">Login</router-link>
-        </div>
-        <div
-          v-if="isUserLoggedIn && networkOnLine"
-          class="nav-item logout-item"
-          @click="logout"
-        >
-          <a>Logout</a>
-        </div>
-        <div v-if="!networkOnLine" class="nav-item offline-label">Offline</div>
       </nav>
 
       <img
@@ -46,7 +35,7 @@ export default {
   computed: {
     ...mapGetters('authentication', ['isUserLoggedIn']),
     ...mapState('authentication', ['user']),
-    ...mapState('app', ['networkOnLine'])
+    ...mapState('app', ['networkOnLine', 'appTitle', 'appShortTitle'])
   },
   methods: {
     async logout() {
@@ -60,7 +49,7 @@ export default {
 @import '@/theme/variables.scss';
 .navbar {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
 }
