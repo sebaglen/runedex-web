@@ -33,22 +33,22 @@ export default {
           permissions: ['bank'],
           config: {}
         },
-        // {
-        //     uniqueId: 2,
-        //     type: "totallevel",
-        //     title: "Total level",
-        //     permissions: ["character"],
-        //     config: {},
-        // },
-        // {
-        //     uniqueId: 3,
-        //     type: "xpgained",
-        //     title: "Experience gained",
-        //     permissions: ["character"],
-        //     config: {
-        //         time: "month"
-        //     },
-        // },
+        {
+          uniqueId: 2,
+          type: 'total-level',
+          title: 'Total level',
+          permissions: ['character'],
+          config: {}
+        },
+        {
+          uniqueId: 3,
+          type: 'xp-gained',
+          title: 'Experience gained',
+          permissions: ['character'],
+          config: {
+            time: 'month'
+          }
+        },
         {
           uniqueId: 4,
           type: 'goal',
