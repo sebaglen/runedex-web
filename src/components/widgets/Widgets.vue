@@ -33,18 +33,21 @@ export default {
                 uniqueId: 1,
                 type: "bankvalue",
                 title: "Bank value",
+                permissions: ["bank"],
                 config: {},
             },
             {
                 uniqueId: 2,
                 type: "totallevel",
                 title: "Total level",
+                permissions: ["character"],
                 config: {},
             },
             {
                 uniqueId: 3,
                 type: "xpgained",
                 title: "Experience gained",
+                permissions: ["character"],
                 config: {
                     time: "month"
                 },
@@ -53,6 +56,7 @@ export default {
                 uniqueId: 4,
                 type: "goal",
                 title: "Complete goal",
+                permissions: ["bank", "character", "quests"],
                 config: {
                     levels: [
                         { attack: 95 },
