@@ -40,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .widgets {
-  width: 400px;
+  width: 320px;
   background-color: $neutral;
 }
 

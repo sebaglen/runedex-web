@@ -22,8 +22,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .character-wrapper {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 7px;
   background-color: $neutral;
   text-align: center;
@@ -31,12 +31,15 @@ export default {
   cursor: pointer;
 }
 .character-name {
-  width: 100%;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   text-align: center;
   color: $lighter;
 }
 .player-icon {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
 </style>

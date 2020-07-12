@@ -1,5 +1,15 @@
 <template>
   <header class="navbar" :class="{ offline: !networkOnLine }">
+    <div class="desktop-navbar flex-row">
+      <div class="logo-container">
+        <img
+          class="logo"
+          src="@/assets/RD.png"
+        />
+      </div>
+      <h2 class="title">Iron Synkie</h2>
+    </div>
+
     <div class="links">
       <nav class="nav-links">
         <div class="nav-item">
@@ -22,7 +32,6 @@
         >
           <a>Logout</a>
         </div>
-        <div v-if="!networkOnLine" class="nav-item offline-label">Offline</div>
       </nav>
 
       <img
@@ -58,10 +67,29 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
+.logo-container {
+  width: 80px;
+  .logo {
+    padding: 2px 0 0 7px;
+    height: 35px;
+    width: 40px;
+  }
+}
+.title {
+  margin: 0 0 0 6px;
+  color: $lighter;
+  font-weight: 350;
+}
 .navbar {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  background-color: $dark;
+}
+.desktop-navbar {
+  width: 400px;
+  height: 40px;
+  background-color: $darker;
 }
 </style>

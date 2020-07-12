@@ -108,7 +108,7 @@ body {
     }
 
     .router {
-      height: calc(100% - 60px); // should be $navbar-height bue doesnt work for some reason ????
+      height: calc(100% - 40px); // should be $navbar-height bue doesnt work for some reason ????
     }
 
     .new-content-available-toastr {
