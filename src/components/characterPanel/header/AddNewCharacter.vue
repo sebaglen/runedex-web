@@ -6,7 +6,7 @@
           src="@/assets/img/add.png"
         />
     </div>
-    <div class="character-name">Add new</div>
+    <div class="character-name">New</div>
   </div>
   
 </template>
@@ -19,8 +19,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .character-wrapper {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 7px;
   background-color: $neutral;
   text-align: center;
@@ -28,13 +28,16 @@ export default {
   cursor: pointer;
 }
 .character-name {
-  width: 100%;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   text-align: center;
   color: $lighter;
 }
 .plus-icon {
-  padding-top: 25px;
-  width: 30px;
-  height: 30px;
+  padding-top: 21px;
+  width: 20px;
+  height: 20px;
 }
 </style>

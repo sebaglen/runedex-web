@@ -11,8 +11,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .item {
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
     background-color: gray;
 }
 </style>
