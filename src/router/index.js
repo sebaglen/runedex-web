@@ -49,19 +49,19 @@ const router = new Router({
       path: '/overview',
       name: 'overview',
       component: () =>
-        import(/* webpackChunkName: "client-chunk-products" */ '@/views/Overview.vue')
+        import(/* webpackChunkName: "client-chunk-overview" */ '@/views/Overview.vue')
     },
     {
       path: '/news',
       name: 'news',
       component: () =>
-        import(/* webpackChunkName: "client-chunk-products" */ '@/views/News.vue')
+        import(/* webpackChunkName: "client-chunk-news" */ '@/views/News.vue')
     },
     {
       path: '/watchlist',
       name: 'watchlist',
       component: () =>
-        import(/* webpackChunkName: "client-chunk-products" */ '@/views/Watchlist.vue')
+        import(/* webpackChunkName: "client-chunk-watchlist" */ '@/views/Watchlist.vue')
     },
     { path: '*', redirect: '/home' }
   ]
