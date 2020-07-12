@@ -1,25 +1,28 @@
 <template>
-  <div class="character-panel">
-    <character-header class="character-header"></character-header>
-    <character class="character"></character>
+  <div class="character-panel flex-column">
+    <select-character class="char-item" :characterName="`Iron Synkie`"></select-character>
+    <select-character class="char-item" :characterName="`Lil Synkie`"></select-character>
+    <add-new-character class="char-item"></add-new-character> 
   </div>
 </template>
 
 <script>
-import CharacterHeader from '@/components/characterPanel/header/CharacterHeader'
-import Character from '@/components/characterPanel/Character'
+import SelectCharacter from '@/components/characterPanel/header/SelectCharacter'
+import AddNewCharacter from '@/components/characterPanel/header/AddNewCharacter'
 
 export default {
-  components: { CharacterHeader, Character }
+  components: { SelectCharacter, AddNewCharacter },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .character-panel {
-  width: 100%;
-  .character-header {
-     background-color: $light-brown;
-  }
+  z-index: 20;
+  background-color: $dark;
+}
+
+.char-item {
+  margin: 10px;
 }
 </style>
