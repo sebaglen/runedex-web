@@ -46,7 +46,7 @@ const router = new Router({
       }
     },
     {
-      path: '/overview',
+      path: '/overview/:widgetType?/:widgetId?',
       name: 'overview',
       component: () =>
         import(/* webpackChunkName: "client-chunk-overview" */ '@/views/Overview.vue')

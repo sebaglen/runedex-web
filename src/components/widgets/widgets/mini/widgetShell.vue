@@ -1,7 +1,14 @@
 <template>
-  <div class="widget">
-    <component :is="type" :unique-id="uniqueId" />
-  </div>
+  <router-link
+    :to="{
+      name: 'overview',
+      params: { widgetType: type, widgetId: uniqueId }
+    }"
+  >
+    <div class="widget">
+      <component :is="type" :unique-id="uniqueId" />
+    </div>
+  </router-link>
 </template>
 
 <script>

@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <div v-if="this.isMobile">
+    <div v-if="this.isMobile" class="content-wrapper">
       <mobile-nav-bar></mobile-nav-bar>
       <div class="router">
         <router-view  />
       </div>
     </div>
-    <div v-else>
+    <div v-else class="content-wrapper">
       <nav-bar></nav-bar>
       <div class="mobile-padding"/>
       <div class="router">
@@ -127,6 +127,9 @@ body {
       width: fit-content;
       margin: auto;
       z-index: 1000;
+    }
+    .content-wrapper {
+      width: 100%;
     }
   }
 }
