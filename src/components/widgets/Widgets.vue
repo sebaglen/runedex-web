@@ -113,7 +113,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .widgets {
-  width: 420px;
+  width: 320px;
+  min-width: 320px;
   background-color: $neutral;
   .widget-container {
     overflow: hidden;
