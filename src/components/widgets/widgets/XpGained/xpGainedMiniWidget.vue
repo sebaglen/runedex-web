@@ -9,7 +9,7 @@
 export default {
   props: {
     // use this to fetch proper config and data
-    uniqueId: Number
+    uniqueId: String
   }
 }
 </script>

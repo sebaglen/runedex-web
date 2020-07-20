@@ -8,7 +8,7 @@
 <script>
 export default {
   props: {
-    uniqueId: Number
+    uniqueId: String
   }
 }
 </script>

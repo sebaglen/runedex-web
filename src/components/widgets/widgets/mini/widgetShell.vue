@@ -26,7 +26,7 @@ export default {
   },
   props: {
     type: String,
-    uniqueId: Number
+    uniqueId: String
   },
   methods: {
     getWidget
