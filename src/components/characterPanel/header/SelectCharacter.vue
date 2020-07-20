@@ -1,20 +1,20 @@
 <template>
   <div>
-    <div class="character-wrapper">
-      <img
-          class="player-icon"
-          src="@/assets/img/person.png"
-        />
-    </div>
-    <div class="character-name">{{characterName}}</div>
+    <router-link
+      :to="{ name: 'overview', params: { accountId: characterName } }"
+    >
+      <div class="character-wrapper">
+        <img class="player-icon" src="@/assets/img/person.png" />
+      </div>
+      <div class="character-name">{{ characterName }}</div>
+    </router-link>
   </div>
-  
 </template>
 
 <script>
 export default {
   props: {
-    characterName: String,
+    characterName: String
   }
 }
 </script>

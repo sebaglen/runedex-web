@@ -2,7 +2,11 @@
   <router-link
     :to="{
       name: 'overview',
-      params: { widgetType: type, widgetId: uniqueId }
+      params: {
+        accountId: this.$route.params.accountId,
+        widgetType: type,
+        widgetId: uniqueId
+      }
     }"
   >
     <div class="widget">
