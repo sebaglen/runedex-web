@@ -26,6 +26,7 @@ export default {
     commit('setUser', null)
     commit('products/setProducts', null, { root: true })
     commit('accounts/setAccounts', null, { root: true })
+    commit('widgets/setWidgets', null, { root: true })
 
     const currentRouter = router.app.$route
     if (!(currentRouter.meta && currentRouter.meta.authNotRequired)) {
