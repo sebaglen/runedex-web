@@ -7,7 +7,7 @@
           src="@/assets/RD.png"
         />
       </div>
-      <h2 class="title">Iron Synkie</h2>
+      <h2 class="title">{{this.$route.params.accountId}}</h2>
     </div>
 
     <div class="links">
@@ -76,7 +76,7 @@ export default {
   }
 }
 .title {
-  margin: 0 0 0 6px;
+  margin: 1px 0 0 10px;
   color: $lighter;
   font-weight: 350;
 }

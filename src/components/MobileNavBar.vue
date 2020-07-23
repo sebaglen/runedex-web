@@ -48,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .navbar {
-  background-color: $darker;
+  background-color: $darkest;
   position: absolute;
   bottom: 0;
   left: 0;

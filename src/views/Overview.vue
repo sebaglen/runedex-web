@@ -17,7 +17,7 @@ export default {
   components: { CharacterPanel, Widgets, CurrentWidget },
   data() {
     return {
-      isSelected: false,
+      isSelected: true,
     }
   },
   methods: {
@@ -68,6 +68,17 @@ export default {
   }
   .isSelected {
     left: 405px;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .widget-wrapper {
+    transition: left 100ms ease;
+    -webkit-box-shadow: -1px 0px 4px 1px $darker;
+    -moz-box-shadow: -1px 0px 4px 1px $darker;
+    box-shadow: -1px 0px 4px 1px $darker;
+  }
+  .isSelected {
+    left: calc(100vw - 60px);
   }
 }
 </style>
