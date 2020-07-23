@@ -1,7 +1,18 @@
 <template>
-  <div class="widget">
-    <component :is="type" :unique-id="uniqueId" />
-  </div>
+  <router-link
+    :to="{
+      name: 'overview',
+      params: {
+        accountId: this.$route.params.accountId,
+        widgetType: type,
+        widgetId: uniqueId
+      }
+    }"
+  >
+    <div class="widget">
+      <component :is="type" :unique-id="uniqueId" />
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -15,7 +26,7 @@ export default {
   },
   props: {
     type: String,
-    uniqueId: Number
+    uniqueId: String
   },
   methods: {
     getWidget

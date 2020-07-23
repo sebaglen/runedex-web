@@ -14,7 +14,7 @@ export default {
     find(state.accounts, account => account.id === accountId),
 
   /**
-   * Get account by id
+   * Get all accounts
    */
   listAccounts: state => () => state.accounts
 }

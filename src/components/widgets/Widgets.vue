@@ -1,14 +1,17 @@
 <template>
   <div :class="[isMobile ? 'mobile' : '', 'widgets']">
+    <div class="widget-header noselect">
+      <div class="title">{{this.$route.params.accountId}}</div>
+    </div>
     <div class="last-seen">
       <div>last seen: 3 hors ago</div>
     </div>
     <div class="widget-container flex-row">
       <widget-shell
-        v-for="widget in data"
-        :key="widget.uniqueId"
+        v-for="widget in widgets[this.$route.params.accountId]"
+        :key="widget.id"
         :type="widget.type"
-        :unique-id="widget.uniqueId"
+        :unique-id="widget.id"
       ></widget-shell>
       <widget-shell type="addnew"></widget-shell>
     </div>
@@ -17,6 +20,7 @@
 
 <script>
 import WidgetShell from '@/components/widgets/widgets/mini/widgetShell'
+import { mapGetters, mapActions, mapState } from 'vuex'
 
 export default {
   components: { WidgetShell },
@@ -25,69 +29,12 @@ export default {
       window: {
         width: 0
       },
-      data: [
-        {
-          uniqueId: 1,
-          type: 'bank-value',
-          title: 'Bank value',
-          permissions: ['bank'],
-          config: {}
-        },
-        {
-          uniqueId: 2,
-          type: 'total-level',
-          title: 'Total level',
-          permissions: ['character'],
-          config: {}
-        },
-        {
-          uniqueId: 3,
-          type: 'xp-gained',
-          title: 'Experience gained',
-          permissions: ['character'],
-          config: {
-            time: 'month'
-          }
-        },
-        {
-          uniqueId: 4,
-          type: 'goal',
-          title: 'Complete goal',
-          permissions: ['bank', 'character', 'quests'],
-          config: {
-            levels: [{ attack: 95 }, { strength: 95 }, { defence: 70 }],
-            quests: [
-              { questId: 'dragon slayer 2' } // get quest id later sometime
-            ],
-            items: [
-              {
-                id: 995, // coins
-                amount: 60000
-              }
-            ]
-          }
-        },
-        {
-          uniqueId: 5,
-          type: 'goal',
-          title: 'Complete goal',
-          config: {
-            levels: [{ attack: 60 }, { strength: 60 }, { defence: 60 }],
-            quests: [
-              { questId: 'dragon slayer' } // get quest id later sometime
-            ],
-            items: [
-              {
-                id: 995, // coins
-                amount: 2000
-              }
-            ]
-          }
-        }
-      ]
+      accountId: null
     }
   },
   computed: {
+    ...mapGetters('widgets', ['listWidgets']),
+    ...mapState('widgets', ['widgets']),
     isMobile() {
       if (this.window.width <= 750) {
         return false
@@ -95,6 +42,17 @@ export default {
       return true
     }
   },
+  watch: {
+    '$route.params.accountId': function() {
+      this.$data.accountId = this.$route.params.accountId
+      this.getWidgets()
+    }
+  },
+  mounted() {
+    this.$data.accountId = this.$route.params.accountId
+    this.getWidgets()
+  },
+
   created() {
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
@@ -103,6 +61,7 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
+    ...mapActions('widgets', ['getWidgets']),
     handleResize() {
       this.window.width = window.innerWidth
     }
@@ -112,9 +71,26 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
+.widget-header {
+  display: none;
+}
+@media only screen and (max-width: 750px) {
+  .widget-header {
+    display: block;
+    height: 40px;
+    width: 100%;
+    background-color: $darkest;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px 10px 0 0;
+    .title {
+      padding: 5px 0 0 13px;
+    }
+  }
+}
 .widgets {
   width: 320px;
-  background-color: $neutral;
+  min-width: 320px;
   .widget-container {
     overflow: hidden;
     flex-wrap: wrap;

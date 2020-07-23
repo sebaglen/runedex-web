@@ -7,7 +7,7 @@
           src="@/assets/RD.png"
         />
       </div>
-      <h2 class="title">Iron Synkie</h2>
+      <h2 class="title">{{this.$route.params.accountId}}</h2>
     </div>
 
     <div class="links">
@@ -76,7 +76,7 @@ export default {
   }
 }
 .title {
-  margin: 0 0 0 6px;
+  margin: 1px 0 0 10px;
   color: $lighter;
   font-weight: 350;
 }
@@ -85,11 +85,11 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: $dark;
+  background-color: $darkest;
 }
 .desktop-navbar {
   width: 400px;
   height: 40px;
-  background-color: $darker;
+  background-color: $darkest;
 }
 </style>
