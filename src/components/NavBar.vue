@@ -85,11 +85,11 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: $dark;
+  background-color: $darkest;
 }
 .desktop-navbar {
   width: 400px;
   height: 40px;
-  background-color: $darker;
+  background-color: $darkest;
 }
 </style>

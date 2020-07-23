@@ -71,7 +71,6 @@ export default {
 .widgets {
   width: 320px;
   min-width: 320px;
-  background-color: $neutral;
   .widget-container {
     overflow: hidden;
     flex-wrap: wrap;

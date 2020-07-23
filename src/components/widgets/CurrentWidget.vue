@@ -46,7 +46,6 @@ export default {
 @import '@/theme/variables.scss';
 .widget {
   width: 100%;
-  background-color: green; // just to clearly see what is what
 }
 
 .mobile {
