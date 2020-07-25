@@ -37,15 +37,16 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .widget {
-  min-width: 140px;
-  min-height: 140px;
-  width: 140px;
+  min-width: 130px;
+  min-height: 130px;
+  width: 130px;
+  height: 130px;
   overflow: hidden;
   border-radius: 10px;
-  background-color: $light;
+  background-color: $light-grey;
   text-align: center;
   font-size: 0.8em;
-  margin: 13px 0 0 13px;
+  margin: 8px 0 0 8px;
   cursor: pointer;
 }
 </style>

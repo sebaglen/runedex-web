@@ -5,9 +5,7 @@ $danger-color: #ea4d46;
 
 /* Navbar */
 
-$navbar-height: 40px;
-$navbar-offline-color: #333;
-$navbar-link-color: #2c3e50;
+$navbar-height: 50px;
 
 // Color palette 
 /*
@@ -35,6 +33,7 @@ $neutral: #F5EDE5;
 
 $black: #23272A;
 $grey: #C4C4C4;
+$light-grey: #F0F0F0;
 $white: #FFFFFF;
 $link: #0A96FF;
 
@@ -71,4 +70,35 @@ $link: #0A96FF;
     display: -moz-flex;
     display: -webkit-flex;
     display: flex;   
+}
+
+@media only screen and (max-width: 920px) { // Dekstop
+  
+}
+@media only screen and (max-width: 690px) { // Desktop-slim or Tablet
+
+}
+@media only screen and (max-width: 420px) { // Mobile
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  h3 {
+    font-size: 14px;
+  }
+  p {
+    font-size: 9px;
+  }
+  small {
+    font-size: 7px;
+  }
+  b {
+    font-size: 9px;
+    font-weight: bold;
+  }
+  a {
+    color: $link;
+  }
 }

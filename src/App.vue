@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-
+    
     <div v-if="!this.$route.meta.hideNavBar">
-      <nav-bar class="navbar"></nav-bar>
+      <nav-bar></nav-bar>
       <div class="navbar-padding"></div>
-      <mobile-nav-bar class="mobile-navbar"></mobile-nav-bar>
+      <mobile-nav-bar></mobile-nav-bar>
     </div>
 
     <transition :name="transitionName">
@@ -111,35 +111,6 @@ body {
       width: fit-content;
       margin: auto;
       z-index: 1000;
-    }
-
-    .content-wrapper {
-      width: 100%;
-
-      .mobile-navbar {
-        display: none;
-      }
-      .navbar {
-        display: block;
-      }
-      .navbar-padding {
-        height: 40px;
-        width: 100%
-      }      
-
-      @media only screen and (max-width: 750px) {
-        .mobile-navbar {
-          display: block;
-        }
-        .navbar {
-          display: none;
-        }
-        .navbar-padding {
-          height: 0;
-          width: 0;
-          display: none;
-        }
-      }
     }
   }
 }

@@ -53,7 +53,10 @@ const router = new Router({
       path: '/app/:accountId?/:widgetType?/:widgetId?',
       name: 'app',
       component: () =>
-        import(/* webpackChunkName: "client-chunk-overview" */ '@/views/App.vue')
+        import(/* webpackChunkName: "client-chunk-overview" */ '@/views/App.vue'),
+      meta: {
+        transition: "fade"
+      }
     },
     {
       path: '/news',

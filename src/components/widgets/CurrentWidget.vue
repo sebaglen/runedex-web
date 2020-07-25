@@ -26,27 +26,21 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .widget-header {
-  display: none;
-}
+    display: flex;
+    height: 40px;
+    width: 100%;
+    background-color: $primary;
+    color: white;
+    font-size: 1.2rem;
+    .title {
+      padding: 5px 0 0 30px;
+    }
+  }
 .hamburger {
   width: 30px;
   height: 30px;
   padding: 5px 0 0 10px;
   cursor: pointer;
-}
-@media only screen and (max-width: 750px) {
-  .widget-header {
-    display: flex;
-    height: 40px;
-    width: 100%;
-    background-color: $contrast;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 10px 10px 0 0;
-    .title {
-      padding: 5px 0 0 30px;
-    }
-  }
 }
 .widget {
   width: 100%;

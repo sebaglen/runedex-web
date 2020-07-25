@@ -26,8 +26,9 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .character-panel {
+  width: 65px;
   z-index: 20;
-  background-color: $primary;
+  background-color: $neutral;
 }
 
 .char-item {

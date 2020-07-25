@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     select() {
-      if (window.innerWidth > 750) {
+      if (window.innerWidth > 750) { // TODO: checks for mobile, fix this.
         return;
       }
       this.isSelected = !this.isSelected;
@@ -36,11 +36,6 @@ export default {
 .character-panel-container {
   // code
 }
-.mini-widget-container {
-  background-color: $primary;
-  border-radius: 10px 10px 0 0;
-  margin-right: 5px;
-}
 .widget-container {
   height: 100%;
   width: 100%;
@@ -49,7 +44,7 @@ export default {
   height: 100%;
 }
 .widget-wrapper {
-  background-color: $primary;
+  background-color: $light-grey;
   height: 100%;
   width: 100%;
   border-radius: 10px 0 0 0;
@@ -67,18 +62,15 @@ export default {
     border-radius: 10px 10px 0 0;
   }
   .isSelected {
-    left: 405px;
+    left: calc(355px);
   }
 }
 @media only screen and (max-width: 460px) {
   .widget-wrapper {
     transition: left 100ms ease;
-    -webkit-box-shadow: -1px 0px 4px 1px $contrast;
-    -moz-box-shadow: -1px 0px 4px 1px $contrast;
-    box-shadow: -1px 0px 4px 1px $contrast;
   }
   .isSelected {
-    left: calc(100vw - 60px);
+    left: calc(350px);
   }
 }
 </style>

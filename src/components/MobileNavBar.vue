@@ -49,70 +49,52 @@ export default {
 @import '@/theme/variables.scss';
 
 .navbar {
-    z-index: 200;
-    height: $navbar-height;
-    box-sizing: border-box;
-    background-color: $contrast;
+  z-index: 200;
+  height: $navbar-height;
+  background-color: $contrast;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .links {
+    padding-left: 1.5rem;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  
-    .links {
-      padding-left: 1.5rem;
-      position: absolute;
-      right: 0.2rem;
-      top: 0.2rem;
+    right: 0.2rem;
+    top: 0.2rem;
+    display: flex;
+
+    .nav-links {
       display: flex;
-  
-      .nav-links {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-  
-        .nav-item {
-          position: relative;
-          display: inline-block;
-          margin-left: 1.5rem;
-  
-          @mixin activatedLink() {
-            margin-bottom: -2px;
-            border-bottom: 2px solid $primary;
-          }
-  
-          .router-link-active {
-            @include activatedLink;
-          }
-  
-          @media (hover) {
-            :hover {
-              @include activatedLink;
-            }
-          }
-        }
+      align-items: center;
+      justify-content: center;
+
+      .nav-item {
+        position: relative;
+        display: inline-block;
+        margin-left: 1.5rem;
       }
-    }
-  
-    &.offline {
-      background: $navbar-offline-color;
-      .links .nav-links .nav-item a,
-      .site-name {
-        color: white;
-      }
-    }
-  
-    .user-picture {
-      max-height: 32px;
-      margin-left: 1.5rem;
-      border-radius: 50%;
-    }
-  
-    .offline-label {
-      padding: 0px 10px;
-      border: 1px solid white;
-      border-radius: 5px;
-      color: white;
-      margin-left: 1.5rem;
     }
   }
+
+  .user-picture {
+    max-height: 32px;
+    margin-left: 1.5rem;
+    border-radius: 50%;
+  }
+
+  .offline-label {
+    padding: 0px 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    margin-left: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 751px) {
+  .navbar {
+    display: none;
+  }
+}
 </style>

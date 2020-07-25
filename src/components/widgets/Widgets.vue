@@ -44,33 +44,15 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
-.widget-header {
-  display: none;
-}
-@media only screen and (max-width: 750px) {
-  .widget-header {
-    display: block;
-    height: 40px;
-    width: 100%;
-    background-color: $contrast;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 10px 10px 0 0;
-    .title {
-      padding: 5px 0 0 13px;
-    }
-  }
-}
 .widgets {
-  width: 320px;
-  min-width: 320px;
+  min-width: 290px;
   .widget-container {
     overflow: hidden;
     flex-wrap: wrap;
   }
   .last-seen {
     margin: 5px 0 0 13px;
-    color: $light;
+    color: $black;
     font-size: 14px;
   }
 }

@@ -3,10 +3,10 @@
     <div class="character-wrapper">
       <img
           class="plus-icon"
-          src="@/assets/img/add.png"
+          src="@/assets/icons/plus.svg"
         />
     </div>
-    <div class="character-name">New</div>
+    <small class="character-name">New</small>
   </div>
   
 </template>
@@ -19,10 +19,10 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .character-wrapper {
-  width: 60px;
-  height: 60px;
-  border-radius: 7px;
-  background-color: $neutral;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: $white;
   text-align: center;
   font-size: 0.8em;
   cursor: pointer;
@@ -33,10 +33,10 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
-  color: $light;
+  color: $black;
 }
 .plus-icon {
-  padding-top: 21px;
+  padding: 13px;
   width: 20px;
   height: 20px;
 }

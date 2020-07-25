@@ -6,7 +6,7 @@
       <div class="character-wrapper">
         <img class="player-icon" src="@/assets/img/person.png" />
       </div>
-      <div class="character-name">{{ characterName }}</div>
+      <small class="character-name">{{ characterName }}</small>
     </router-link>
   </div>
 </template>
@@ -22,10 +22,10 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .character-wrapper {
-  width: 60px;
-  height: 60px;
-  border-radius: 7px;
-  background-color: $neutral;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: $white;
   text-align: center;
   font-size: 0.8em;
   cursor: pointer;
@@ -36,10 +36,10 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
-  color: $light;
+  color: $black;
 }
 .player-icon {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
 }
 </style>

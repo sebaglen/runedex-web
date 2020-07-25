@@ -111,30 +111,7 @@ export default {
         position: relative;
         display: inline-block;
         margin-left: 1.5rem;
-
-        @mixin activatedLink() {
-          margin-bottom: -2px;
-          border-bottom: 2px solid $primary;
-        }
-
-        .router-link-active {
-          @include activatedLink;
-        }
-
-        @media (hover) {
-          :hover {
-            @include activatedLink;
-          }
-        }
       }
-    }
-  }
-
-  &.offline {
-    background: $navbar-offline-color;
-    .links .nav-links .nav-item a,
-    .site-name {
-      color: white;
     }
   }
 
@@ -150,6 +127,11 @@ export default {
     border-radius: 5px;
     color: white;
     margin-left: 1.5rem;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .navbar {
+    display: none;
   }
 }
 </style>
