@@ -17,11 +17,11 @@ export default {
 
 .button {
   cursor: pointer;
-  color: $black;
-  background-color: $white;
-  border-radius: 40px;
-  padding: 10px 20px 10px 20px;
+  color: $white;
+  background-color: $primary;
+  border-radius: 80px;
+  padding: 10px 40px 10px 40px;
   text-align: center;
-  font-size: 18px;
+  font-size: 24px;
 }
 </style>

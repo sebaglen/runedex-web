@@ -116,27 +116,27 @@ body {
     .content-wrapper {
       width: 100%;
 
-      .navbar {
-        display: block;
-      }
       .mobile-navbar {
         display: none;
+      }
+      .navbar {
+        display: block;
       }
       .navbar-padding {
         height: 40px;
         width: 100%
-      }
-
-      
+      }      
 
       @media only screen and (max-width: 750px) {
-        .navbar {
-          display: none;
-        }
         .mobile-navbar {
           display: block;
         }
+        .navbar {
+          display: none;
+        }
         .navbar-padding {
+          height: 0;
+          width: 0;
           display: none;
         }
       }

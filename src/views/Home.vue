@@ -1,9 +1,9 @@
 <template>
   <div class="page-wrapper">
     <div class="header">
-      <div @click="logIn()">
+      <div @click="logInTop()">
         <small-button class="button" :text="'Open RuneDex'"></small-button>
-        <div  :class="[expand ? 'expand' : '', 'expand-container']"></div>
+        <div :class="[isTop ? 'expand' : '', 'expand-container']"></div>
       </div>
       <div class="header-filter">
         <div class="title">Your account sitter</div>
@@ -22,7 +22,26 @@
         <div class="section-container">content</div>
       </div>
       <div class="section contrast">
-        <div class="section-container">content</div>
+        <div class="section-container">
+          <div class="title">Everything is taken care of while you are out, grinding real life.</div>
+          <p class="description">RuneDex is currently still in development, but we would love to have you as a Alpha tester! Did we mention its totally free?</p>
+          <div class="flex-row">
+            <img
+              class="img"
+              src="@/assets/icons/sword.svg"
+            />
+            <div class="sub-title">Ready to elevate your osrs experience?</div>
+            <img
+              class="img flip"
+              src="@/assets/icons/sword.svg"
+            />
+          </div>
+          <div @click="logInBottom()">
+            <Button class="button" :text="'Open RuneDex'"></Button>
+            <div :class="[isBottom ? 'expand-bottom' : '', 'expand-container-bottom']"></div>
+          </div>
+          <div class="pb" />
+        </div>
       </div>
     </div>
     <div class="footer">
@@ -35,9 +54,10 @@
 <script>
 import { mapState } from 'vuex'
 import SmallButton from '@/components/buttons/SmallButton'
+import Button from '@/components/buttons/Button'
 
 export default {
-  components: { SmallButton },
+  components: { SmallButton, Button },
   head() {
     return {
       title: {
@@ -54,17 +74,37 @@ export default {
   },
   data() {
     return {
-      expand: false,
+      expand: "",
     }
   },
-  computed: mapState('app', ['appTitle']),
+  computed: {
+    ...mapState('app', ['appTitle']),
+    isTop() {
+      if (this.expand === "top") {
+        return true;
+      }
+      return false;
+    },
+    isBottom() {
+      if (this.expand === "bottom") {
+        return true;
+      }
+      return false;
+    },
+  }, 
   methods: {
-    logIn() {
-      this.expand = true;
+    logInTop() {
+      this.logIn("top");
+    },
+    logInBottom() {
+      this.logIn("bottom");
+    },
+    logIn(arg) {
+      this.expand = arg;
       const router = this.$router;
       setTimeout(() => { 
         router.push({ name: 'app'})
-      }, 600);
+      }, 250);
     }
   }
 }
@@ -82,7 +122,7 @@ export default {
   height: 0;
   border-radius: 10000px;
   z-index: 0;
-  transition: 1000ms ease;
+  transition: 400ms ease;
 }
 .expand {
   z-index: 2;
@@ -90,6 +130,24 @@ export default {
   height: 200%;
   top: -50%;
   right: -50%;
+}
+.expand-container-bottom {
+  position: fixed;
+  bottom: 120px;
+  left: 120px;
+  background-color: $light;
+  width: 0;
+  height: 0;
+  border-radius: 10000px;
+  z-index: 0;
+  transition: 400ms ease;
+}
+.expand-bottom {
+  z-index: 2;
+  width: 200%;
+  height: 200%;
+  bottom: -50%;
+  left: -50%;
 }
 
 .page-wrapper {
@@ -158,31 +216,61 @@ export default {
   .content {
     text-align: left;
     .section {
-      position: relative;
-      height: 600px;
+      min-height: 600px;
       @media only screen and (max-width: 690px) { // Desktop-slim or Tablet
-        height: 750px;
+        min-height: 750px;
       }
-
       .section-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-        -ms-transform: translateX(-50%);
-        transform: translateX(-50%);
-        background-color: burlywood;
+        margin: auto;
 
         width: 760px;
         @media only screen and (max-width: 920px) { // Dekstop
           width: 600px;
         }
         @media only screen and (max-width: 690px) { // Desktop-slim or Tablet
-          width: 400px;
+          width: 420px;
         }
         @media only screen and (max-width: 420px) { // Mobile
           width: 100%
+        }
+
+        .title {
+          padding-top: 100px;
+          text-align: center;
+          // font-family: SeoulNamsan CEB;
+          letter-spacing: -0.05em;
+          font-size: 50px;
+        }
+        .description {
+          text-align: center;
+          font-size: 24px;
+          max-width: 1000px;
+          padding: 5px 30px 0 30px;
+        }
+        .sub-title {
+          text-align: center;
+          font-size: 34px;
+          padding: 70px 15px 30px 15px;
+        }
+        .button {
+          width: 200px;
+          margin: auto;
+        }
+        .img {
+          padding-top: 70px;
+          width: 75px;
+          height: 75px;
+        }
+        @media only screen and (max-width: 690px) { // Desktop-slim or Tablet
+          .img {
+            display: none;
+          }
+        }
+        .flip {
+          transform: scale(-1, 1);
+        }
+        .pb {
+          padding-bottom: 100px;
         }
       }
     }

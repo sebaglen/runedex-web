@@ -67,29 +67,89 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
-.logo-container {
-  width: 80px;
-  .logo {
-    padding: 2px 0 0 7px;
-    height: 35px;
-    width: 40px;
-  }
-}
-.title {
-  margin: 1px 0 0 10px;
-  color: $light;
-  font-weight: 350;
-}
 .navbar {
+  z-index: 200;
+  height: $navbar-height;
+  box-sizing: border-box;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   background-color: $contrast;
-}
-.desktop-navbar {
-  width: 400px;
-  height: 40px;
-  background-color: $contrast;
+  .logo-container {
+    width: 80px;
+    .logo {
+      padding: 2px 0 0 7px;
+      height: 35px;
+      width: 40px;
+    }
+  }
+  .title {
+    margin: 1px 0 0 10px;
+    color: $light;
+    font-weight: 350;
+  }
+  .desktop-navbar {
+    width: 400px;
+    height: 40px;
+    background-color: $contrast;
+  }
+
+  .links {
+    padding-left: 1.5rem;
+    position: absolute;
+    right: 0.2rem;
+    top: 0.2rem;
+    display: flex;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .nav-item {
+        position: relative;
+        display: inline-block;
+        margin-left: 1.5rem;
+
+        @mixin activatedLink() {
+          margin-bottom: -2px;
+          border-bottom: 2px solid $primary;
+        }
+
+        .router-link-active {
+          @include activatedLink;
+        }
+
+        @media (hover) {
+          :hover {
+            @include activatedLink;
+          }
+        }
+      }
+    }
+  }
+
+  &.offline {
+    background: $navbar-offline-color;
+    .links .nav-links .nav-item a,
+    .site-name {
+      color: white;
+    }
+  }
+
+  .user-picture {
+    max-height: 32px;
+    margin-left: 1.5rem;
+    border-radius: 50%;
+  }
+
+  .offline-label {
+    padding: 0px 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    margin-left: 1.5rem;
+  }
 }
 </style>
