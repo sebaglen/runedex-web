@@ -27,8 +27,8 @@ export default {
     const widgetsDb = new WidgetsDB(rootState.authentication.user.id, accountId)
 
     commit('setWidgetRegistrationPending', true)
-    widgetsDb.create({ type, config: { sampleConfig: true } })
-    dispatch('getWidgets')
+    await widgetsDb.create({ type, config: { sampleConfig: true } })
+    await dispatch('getWidgets', accountId)
     commit('setWidgetRegistrationPending', false)
   }
 }
