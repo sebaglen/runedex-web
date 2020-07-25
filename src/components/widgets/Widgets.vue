@@ -1,11 +1,13 @@
 <template>
+<div class="outer">
   <div :class="['widgets']">
-    <div class="widget-header noselect">
-      <div class="title">{{ this.$route.params.accountId }}</div>
+    <div class="margin noselect">
+      <h2>{{ this.$route.params.accountId }}</h2>
+      <div class="last-seen">
+        <p>last seen: 3 hors ago</p>
+      </div>
     </div>
-    <div class="last-seen">
-      <div>last seen: 3 hors ago</div>
-    </div>
+    <div class="split"/>
     <div v-if="isFetchingWidgets">Loading...</div>
     <div v-else class="widget-container flex-row">
       <widget-shell
@@ -14,17 +16,29 @@
         :type="widget.type"
         :unique-id="widget.id"
       ></widget-shell>
-      <widget-shell type="addnew"></widget-shell>
+      <large-button class="browse-button margin" :text="'Browse widgets'"/>
+    </div>
+    <div class="break-9" />
+    <div class="split"/>
+    <div class="break-9" />
+    <div class="margin flex-row">
+      <img
+        class="img"
+        src="@/assets/icons/exit.svg"
+      />
+      <h3>Remove {{ this.$route.params.accountId }}</h3>
     </div>
   </div>
+</div>
 </template>
 
 <script>
+import LargeButton from '@/components/buttons/LargeButton'
 import WidgetShell from '@/components/widgets/widgets/mini/widgetShell'
 import { mapGetters } from 'vuex'
 
 export default {
-  components: { WidgetShell },
+  components: { WidgetShell, LargeButton },
   data() {
     return {
       window: {
@@ -44,16 +58,34 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
+.outer {
+  display: table;
+  height: 100%;
+  width: 65px;
+}
+.margin {
+  margin: 0 10px 0 10px;
+}
 .widgets {
-  min-width: 290px;
+  min-width: 285px;
+  display: table-cell;
+  vertical-align: middle;
+  .img {
+    width: 20px;
+    height: 20px;
+    padding-right: 6px;
+  }
   .widget-container {
     overflow: hidden;
     flex-wrap: wrap;
+    .browse-button {
+      width: 100%;
+      margin-top: 10px;
+    }
   }
   .last-seen {
-    margin: 5px 0 0 13px;
+    padding-left: 7px;
     color: $black;
-    font-size: 14px;
   }
 }
 </style>

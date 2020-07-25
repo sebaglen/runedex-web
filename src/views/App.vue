@@ -45,7 +45,6 @@ export default {
 }
 .widget-wrapper {
   background-color: $light-grey;
-  height: 100%;
   width: 100%;
   border-radius: 10px 0 0 0;
 }
@@ -55,14 +54,14 @@ export default {
     position: fixed;
     right: 0;
     top: 0;
-    bottom: 40px;
+    bottom: $navbar-height;
     left: 0;
     
     transition: left 300ms ease;
     border-radius: 10px 10px 0 0;
   }
   .isSelected {
-    left: calc(355px);
+    left: calc(350px);
   }
 }
 @media only screen and (max-width: 460px) {

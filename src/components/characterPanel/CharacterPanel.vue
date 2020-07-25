@@ -1,5 +1,6 @@
 <template>
-  <div class="character-panel flex-column">
+<div class="outer">
+  <div class="inner flex-column">
     <select-character
       v-for="account in accounts"
       :key="account.id"
@@ -8,6 +9,7 @@
     ></select-character>
     <add-new-character class="char-item"></add-new-character>
   </div>
+</div>
 </template>
 
 <script>
@@ -25,10 +27,15 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
-.character-panel {
+.outer {
+  display: table;
+  height: 100%;
   width: 65px;
-  z-index: 20;
   background-color: $neutral;
+}
+.inner {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .char-item {
