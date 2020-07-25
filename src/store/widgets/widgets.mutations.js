@@ -1,27 +1,27 @@
 export default {
   /* Widgets */
   setWidgets: (state, { widgets, accountId }) =>
-    (state.widgets[accountId] = widgets),
+    (state.widgets = { ...state.widgets, [accountId]: widgets }),
   addWidget: (state, { widget, accountId }) =>
-    state.widgets[accountId].push(widget),
-  removeWidgetById: (state, { widgetId, accountId }) => {
-    const index = state.widgets[accountId].findIndex(
-      widget => widget.id === widgetId
-    )
-    state.widgets.splice(index, 1)
-  },
-
-  /* Widgets deletion */
-  addWidgetDeletionPending: (state, widgetId) =>
-    state.widgetDeletionPending.push(widgetId),
-  removeWidgetDeletionPending: (state, { widgetId, accountId }) => {
-    const index = state.widgets[accountId].findIndex(
-      widget => widget.id === widgetId
-    )
-    state.widgetDeletionPending.splice(index, 1)
-  },
+    (state.widgets = {
+      ...state.widgets,
+      [accountId]: [...state.widgets[accountId], widget]
+    }),
 
   /* Widget registration */
   setWidgetRegistrationPending: (state, value) =>
-    (state.widgetRegistrationPending = value)
+    (state.widgetRegistrationPending = value),
+
+  /* Widget fetching in progress for this account */
+  startWidgetFetching: (state, { accountId }) =>
+    (state.fetchingWidgetsForAccount = [
+      ...state.fetchingWidgetsForAccount,
+      accountId
+    ]),
+
+  /* Widget fetching completed for this account */
+  completeWidgetFetching: (state, { accountId }) =>
+    (state.fetchingWidgetsForAccount = state.fetchingWidgetsForAccount.filter(
+      a => a !== accountId
+    ))
 }

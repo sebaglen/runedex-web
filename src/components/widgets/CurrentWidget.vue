@@ -1,11 +1,12 @@
 <template>
-  <div :class="[isMobile ? 'mobile' : '', 'widget']">
+  <div :class="['widget']">
     <div class="widget-header flex-row noselect">
-      <img
-        class="hamburger"
-        src="@/assets/img//hamburgerwhite.png"
-      />
-      <div class="title">{{`${this.$route.params.widgetType} - ${this.$route.params.accountId}`}}</div>
+      <img class="hamburger" src="@/assets/img//hamburgerwhite.png" />
+      <div class="title">
+        {{
+          `${this.$route.params.widgetType} - ${this.$route.params.accountId}`
+        }}
+      </div>
     </div>
     <component
       :is="this.$route.params.widgetType"
@@ -18,7 +19,7 @@
 import { mainWidgetComponents } from './widgets/widgetUtils'
 
 export default {
-  components: { ...mainWidgetComponents },
+  components: { ...mainWidgetComponents }
 }
 </script>
 
@@ -49,9 +50,5 @@ export default {
 }
 .widget {
   width: 100%;
-}
-
-.mobile {
-  // code
 }
 </style>
