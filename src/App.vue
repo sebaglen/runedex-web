@@ -7,7 +7,9 @@
       <mobile-nav-bar class="mobile-navbar"></mobile-nav-bar>
     </div>
 
-    <router-view :class="[!this.$route.meta.hideNavBar ? 'router' : '']" />
+    <transition :name="transitionName">
+      <router-view :class="[!this.$route.meta.hideNavBar ? 'router' : '']" />
+    </transition>
 
 
 
@@ -46,12 +48,21 @@ export default {
       'serviceWorkerSkipWaiting'
     ]),
   },
+  data() {
+    return {
+      transitionName: "",
+    }
+  },
+  watch: {
+  '$route' (to, from) { // eslint-disable-line
+    this.transitionName = to.meta && from.name ? to.meta.transition : ''; // from.name ensures we came from a route, and not a page refresh
+  }
+}
 }
 </script>
 
 <style lang="scss">
 @import '@/theme/variables.scss';
-
 body {
   margin: 0;
 
@@ -67,6 +78,13 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100vh;
+
+    .fade-enter-active {
+      transition: all 300ms ease;
+    }
+    .fade-enter, .fade-leave-to {
+      opacity: 0;
+    }
 
     .mobile-padding {
       height: $navbar-height;

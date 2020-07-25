@@ -1,9 +1,10 @@
 <template>
   <div class="page-wrapper">
     <div class="header">
-      <router-link to="/app">
-          <small-button class="button" :text="'Open RuneDex'"></small-button>
-        </router-link>
+      <div @click="logIn()">
+        <small-button class="button" :text="'Open RuneDex'"></small-button>
+        <div  :class="[expand ? 'expand' : '', 'expand-container']"></div>
+      </div>
       <div class="header-filter">
         <div class="title">Your account sitter</div>
         <p class="description">Whether you´re an Ironman, main account, market flipper or just enjoy farming cowhides, RuneDex makes it easy to monitor your progression, notify you of big bank- and item value changes, give status on user-configured tasks and much more.</p>
@@ -51,18 +52,51 @@ export default {
       ]
     }
   },
+  data() {
+    return {
+      expand: false,
+    }
+  },
   computed: mapState('app', ['appTitle']),
+  methods: {
+    logIn() {
+      this.expand = true;
+      const router = this.$router;
+      setTimeout(() => { 
+        router.push({ name: 'app'})
+      }, 600);
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 
+.expand-container {
+  position: fixed;
+  top: 60px;
+  right: 120px;
+  background-color: $light;
+  width: 0;
+  height: 0;
+  border-radius: 10000px;
+  z-index: 0;
+  transition: 1000ms ease;
+}
+.expand {
+  z-index: 2;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  right: -50%;
+}
+
 .page-wrapper {
   margin: auto;
   width: 100%;
   height: 100%;
-  @media only screen and (max-width: 305px) { // Mobile
+  @media only screen and (max-width: 305px) { // Minimun app width, introduce scrollbar after this.
     width: 305px;
   }
   
@@ -80,9 +114,10 @@ export default {
     background-size: cover;
 
     .button {
+      z-index: 1;
       position: absolute;
-      top: 20px;
-      right: 40px;
+      top: 40px;
+      right: 80px;
       @media only screen and (max-width: 420px) { // Mobile
         top: 10px;
         right: 20px;

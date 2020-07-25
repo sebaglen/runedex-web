@@ -46,6 +46,7 @@ const router = new Router({
       meta: {
         authNotRequired: true,
         hideNavBar: true,
+        transition: "fade"
       }
     },
     {

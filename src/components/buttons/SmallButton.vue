@@ -16,6 +16,7 @@ export default {
 @import '@/theme/variables.scss';
 
 .button {
+  cursor: pointer;
   color: $black;
   background-color: $white;
   border-radius: 40px;
