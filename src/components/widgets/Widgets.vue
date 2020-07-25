@@ -1,14 +1,15 @@
 <template>
-  <div :class="[isMobile ? 'mobile' : '', 'widgets']">
+  <div :class="['widgets']">
     <div class="widget-header noselect">
-      <div class="title">{{this.$route.params.accountId}}</div>
+      <div class="title">{{ this.$route.params.accountId }}</div>
     </div>
     <div class="last-seen">
       <div>last seen: 3 hors ago</div>
     </div>
-    <div class="widget-container flex-row">
+    <div v-if="isFetchingWidgets">Loading...</div>
+    <div v-else class="widget-container flex-row">
       <widget-shell
-        v-for="widget in widgets[this.$route.params.accountId]"
+        v-for="widget in currentWidgets"
         :key="widget.id"
         :type="widget.type"
         :unique-id="widget.id"
@@ -20,7 +21,7 @@
 
 <script>
 import WidgetShell from '@/components/widgets/widgets/mini/widgetShell'
-import { mapGetters, mapActions, mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   components: { WidgetShell },
@@ -28,42 +29,14 @@ export default {
     return {
       window: {
         width: 0
-      },
-      accountId: null
+      }
     }
   },
   computed: {
+    ...mapGetters('widgets', ['isFetchingWidgets']),
     ...mapGetters('widgets', ['listWidgets']),
-    ...mapState('widgets', ['widgets']),
-    isMobile() {
-      if (this.window.width <= 750) {
-        return false
-      }
-      return true
-    }
-  },
-  watch: {
-    '$route.params.accountId': function() {
-      this.$data.accountId = this.$route.params.accountId
-      this.getWidgets()
-    }
-  },
-  mounted() {
-    this.$data.accountId = this.$route.params.accountId
-    this.getWidgets()
-  },
-
-  created() {
-    window.addEventListener('resize', this.handleResize)
-    this.handleResize()
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.handleResize)
-  },
-  methods: {
-    ...mapActions('widgets', ['getWidgets']),
-    handleResize() {
-      this.window.width = window.innerWidth
+    currentWidgets() {
+      return this.listWidgets(this.$route.params.accountId)
     }
   }
 }
@@ -100,9 +73,5 @@ export default {
     color: $lighter;
     font-size: 14px;
   }
-}
-
-.mobile {
-  // code
 }
 </style>

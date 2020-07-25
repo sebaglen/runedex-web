@@ -6,11 +6,14 @@ export default {
   /**
    * Fetch accounts of current loggedin user
    */
-  getAccounts: async ({ rootState, commit }) => {
+  getAccounts: async ({ rootState, commit, dispatch }) => {
     const accountDb = new AccountsDB(rootState.authentication.user.id)
 
     const accounts = await accountDb.readAll()
     commit('setAccounts', accounts)
+    accounts.forEach(account => {
+      dispatch('widgets/getWidgets', account.id, { root: true })
+    })
   },
 
   /**

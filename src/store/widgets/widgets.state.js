@@ -1,5 +1,5 @@
 export default {
   widgets: {},
-  widgetDeletionPending: [],
-  widgetRegistrationPending: false
+  widgetRegistrationPending: false,
+  fetchingWidgetsForAccount: []
 }
