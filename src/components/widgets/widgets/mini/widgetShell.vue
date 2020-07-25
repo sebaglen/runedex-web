@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="{
-      name: 'overview',
+      name: 'app',
       params: {
         accountId: this.$route.params.accountId,
         widgetType: type,

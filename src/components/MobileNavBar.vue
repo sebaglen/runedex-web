@@ -3,7 +3,7 @@
     <div class="links">
       <nav class="nav-links">
         <div class="nav-item">
-          <router-link to="/overview">
+          <router-link to="/app">
             <rune-dex-router-item></rune-dex-router-item>
           </router-link>
         </div>
@@ -48,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .navbar {
-  background-color: $darkest;
+  background-color: $contrast;
   position: absolute;
   bottom: 0;
   left: 0;

@@ -13,7 +13,7 @@
     <div class="links">
       <nav class="nav-links">
         <div class="nav-item">
-          <router-link to="/overview">
+          <router-link to="/app">
             <rune-dex-router-item></rune-dex-router-item>
           </router-link>
         </div>
@@ -77,7 +77,7 @@ export default {
 }
 .title {
   margin: 1px 0 0 10px;
-  color: $lighter;
+  color: $light;
   font-weight: 350;
 }
 .navbar {
@@ -85,11 +85,11 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background-color: $darkest;
+  background-color: $contrast;
 }
 .desktop-navbar {
   width: 400px;
   height: 40px;
-  background-color: $darkest;
+  background-color: $contrast;
 }
 </style>

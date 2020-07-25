@@ -27,7 +27,7 @@ export default {
 @import '@/theme/variables.scss';
 .character-panel {
   z-index: 20;
-  background-color: $darker;
+  background-color: $primary;
 }
 
 .char-item {

@@ -1,18 +1,13 @@
 <template>
   <div id="app">
-    <div v-if="this.isMobile" class="content-wrapper">
-      <mobile-nav-bar></mobile-nav-bar>
-      <div class="router">
-        <router-view  />
-      </div>
+
+    <div v-if="!this.$route.meta.hideNavBar">
+      <nav-bar class="navbar"></nav-bar>
+      <div class="navbar-padding"></div>
+      <mobile-nav-bar class="mobile-navbar"></mobile-nav-bar>
     </div>
-    <div v-else class="content-wrapper">
-      <nav-bar></nav-bar>
-      <div class="mobile-padding"/>
-      <div class="router">
-        <router-view  />
-      </div>
-    </div>
+
+    <router-view :class="[!this.$route.meta.hideNavBar ? 'router' : '']" />
 
 
 
@@ -44,41 +39,19 @@ export default {
   computed: {
     ...mapGetters('app', ['newContentAvailable']),
     ...mapState('app', ['showAddToHomeScreenModalForApple', 'refreshingApp']),
-    isMobile() {
-      if (this.window.width <= 750) {
-        return true;
-      }
-      return false;
-    }
-  },
-  data() {
-    return {
-      window: {
-        width: 0,
-      }
-    }
   },
   methods: {
     ...mapActions('app', [
       'closeAddToHomeScreenModalForApple',
       'serviceWorkerSkipWaiting'
     ]),
-    handleResize() {
-      this.window.width = window.innerWidth;
-    }
-  },
-  created() {
-    window.addEventListener('resize', this.handleResize);
-    this.handleResize();
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.handleResize);
   },
 }
 </script>
 
 <style lang="scss">
 @import '@/theme/variables.scss';
+
 body {
   margin: 0;
 
@@ -88,20 +61,12 @@ body {
   }
 
   #app {
-    background-color: $darker;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: $light;
+    font-family: Roboto, -apple-system, Helvetica Neue, BlinkMacSystemFont, Segoe UI, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height: 100vh;
-
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    display: flex;   
 
     .mobile-padding {
       height: $navbar-height;
@@ -129,8 +94,34 @@ body {
       margin: auto;
       z-index: 1000;
     }
+
     .content-wrapper {
       width: 100%;
+
+      .navbar {
+        display: block;
+      }
+      .mobile-navbar {
+        display: none;
+      }
+      .navbar-padding {
+        height: 40px;
+        width: 100%
+      }
+
+      
+
+      @media only screen and (max-width: 750px) {
+        .navbar {
+          display: none;
+        }
+        .mobile-navbar {
+          display: block;
+        }
+        .navbar-padding {
+          display: none;
+        }
+      }
     }
   }
 }

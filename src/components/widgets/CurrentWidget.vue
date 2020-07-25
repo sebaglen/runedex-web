@@ -39,7 +39,7 @@ export default {
     display: flex;
     height: 40px;
     width: 100%;
-    background-color: $darkest;
+    background-color: $contrast;
     color: white;
     font-size: 1.2rem;
     border-radius: 10px 10px 0 0;

@@ -25,7 +25,8 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        authNotRequired: true
+        authNotRequired: true,
+        hideNavBar: true,
       }
     },
     {
@@ -33,7 +34,8 @@ const router = new Router({
       name: 'check-login',
       component: CheckLogin,
       meta: {
-        authNotRequired: true
+        authNotRequired: true,
+        hideNavBar: true,
       }
     },
     {
@@ -42,14 +44,15 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "client-chunk-login" */ '@/views/Login.vue'),
       meta: {
-        authNotRequired: true
+        authNotRequired: true,
+        hideNavBar: true,
       }
     },
     {
-      path: '/overview/:accountId?/:widgetType?/:widgetId?',
-      name: 'overview',
+      path: '/app/:accountId?/:widgetType?/:widgetId?',
+      name: 'app',
       component: () =>
-        import(/* webpackChunkName: "client-chunk-overview" */ '@/views/Overview.vue')
+        import(/* webpackChunkName: "client-chunk-overview" */ '@/views/App.vue')
     },
     {
       path: '/news',

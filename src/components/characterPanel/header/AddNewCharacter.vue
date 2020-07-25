@@ -33,7 +33,7 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
-  color: $lighter;
+  color: $light;
 }
 .plus-icon {
   padding-top: 21px;

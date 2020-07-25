@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link
-      :to="{ name: 'overview', params: { accountId: characterName } }"
+      :to="{ name: 'app', params: { accountId: characterName } }"
     >
       <div class="character-wrapper">
         <img class="player-icon" src="@/assets/img/person.png" />
@@ -36,7 +36,7 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
-  color: $lighter;
+  color: $light;
 }
 .player-icon {
   width: 60px;
