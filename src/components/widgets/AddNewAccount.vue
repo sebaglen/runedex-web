@@ -10,14 +10,14 @@
         type="text"
         :value="accountNameToRegister"
         @input="setAccountNameToRegister($event.target.value)"
-        @keypress.enter="triggerRegisterAccountAction"
+        @keypress.enter="register()"
       />
       <div class="break-9" />
       <div v-if="user.auth.pin">
         <p>PIN: {{ user.auth.pin }}</p>
       </div>
 
-      <div @click="triggerRegisterAccountAction">
+      <div @click="register()">
         <small-button 
           :class="{ disabled: accountRegistrationPending }"
           :disabled="!!accountRegistrationPending"
@@ -45,7 +45,11 @@ export default {
   },
   methods: {
     ...mapMutations('accounts', ['setAccountNameToRegister']),
-    ...mapActions('accounts', ['triggerRegisterAccountAction'])
+    ...mapActions('accounts', ['triggerRegisterAccountAction']),
+    register() {
+      this.$router.push({ name: 'app', params: {accountId: this.accountNameToRegister }})
+      this.triggerRegisterAccountAction();
+    }
   }
 }
 </script>

@@ -50,6 +50,7 @@ export default {
     ...mapActions('accounts', ['deleteAccount']),
     deleteAcc() {
       this.deleteAccount(this.$route.params.accountId);
+      this.$router.push({ name: 'app', params: { accountId: 'new' }})
     }
   },
   computed: {
