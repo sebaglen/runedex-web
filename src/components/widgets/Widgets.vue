@@ -11,7 +11,7 @@
     <div class="split"/>
     <div v-if="isFetchingWidgets">Loading...</div>
     <div v-else>
-      <awaiting-first-login v-if="!hasAccountData"></awaiting-first-login>
+      <awaiting-first-login class="margin" v-if="!hasAccountData"></awaiting-first-login>
       <div v-else class="widget-container flex-row">
         <widget-shell
           v-for="widget in currentWidgets"
