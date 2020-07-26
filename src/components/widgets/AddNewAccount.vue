@@ -3,16 +3,17 @@
     <div class="inner">
       <h2>Link new OSRS account</h2>
       <div class="split"/>
+      <div class="break-8" />
       <p>Enter the in-game name of the Old School RuneScape account you want to link.</p>
       <input
-        placeholder="Account name..."
+        placeholder="Account name"
         class="account-name-input"
         type="text"
         :value="accountNameToRegister"
         @input="setAccountNameToRegister($event.target.value)"
         @keypress.enter="register()"
       />
-      <div class="break-9" />
+      <div class="break-8" />
       <div v-if="user.auth && user.auth.pin">
         <p>PIN: {{ user.auth.pin }}</p>
       </div>
@@ -65,7 +66,21 @@ export default {
 .inner {
   display: table-cell;
   vertical-align: middle;
+  h2 {
+    margin-bottom: 8px;
+  }
 }
+.account-name-input {
+    padding-left: 6px;
+    height: 17px;
+    width: 150px;
+    outline: none;
+    font: inherit;
+    font-size: 9px;
+    border: 1px solid;
+    border-color: $grey;
+    background-color: $light-grey;
+  }
 .add-account-btn {
   font-size: 9px;
   width: 60px;

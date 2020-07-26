@@ -22,9 +22,9 @@
         <large-button class="browse-button margin" :text="'Browse widgets'"/>
       </div>
     </div>
-    <div class="break-9" />
+    <div class="break-8" />
     <div class="split"/>
-    <div class="break-9" />
+    <div class="break-8" />
     <div @click="deleteAcc()" class="menu-button margin flex-row">
       <img
         class="img"

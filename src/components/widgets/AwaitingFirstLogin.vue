@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Whats next?</h3>
-    <div class="break-9" />
+    <div class="break-8" />
     <div class="margin">
       <div class="section outer flex-row">
         <div class="step outer"><p class="inner">1</p></div>
