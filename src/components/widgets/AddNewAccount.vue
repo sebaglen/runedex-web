@@ -13,7 +13,7 @@
         @keypress.enter="register()"
       />
       <div class="break-9" />
-      <div v-if="user.auth.pin">
+      <div v-if="user.auth && user.auth.pin">
         <p>PIN: {{ user.auth.pin }}</p>
       </div>
 
