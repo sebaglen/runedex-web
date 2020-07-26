@@ -112,7 +112,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
-
 .expand-container {
   position: fixed;
   top: 60px;

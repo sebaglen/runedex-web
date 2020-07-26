@@ -7,7 +7,9 @@
       class="char-item"
       :character-name="account.id"
     ></select-character>
-    <add-new-character class="char-item"></add-new-character>
+    <router-link to="/app/new">
+      <add-new-character class="char-item"></add-new-character>
+    </router-link>
   </div>
 </div>
 </template>

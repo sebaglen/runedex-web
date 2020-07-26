@@ -1,8 +1,8 @@
 <template>
   <div class="page-wrapper flex-row">
     <character-panel class="character-panel-container"></character-panel>
-    <widgets class="mini-widget-container"></widgets>
-    <div class="widget-container" v-on:click="select">
+    <widget-panel></widget-panel>
+    <div v-on:click="select">
       <current-widget :class="[isSelected ? 'isSelected' : '', 'widget-wrapper']"></current-widget>
     </div>
   </div>
@@ -10,11 +10,11 @@
 
 <script>
 import CharacterPanel from '@/components/characterPanel/CharacterPanel'
-import Widgets from '@/components/widgets/Widgets'
+import WidgetPanel from '@/components/widgets/WidgetPanel'
 import CurrentWidget from '@/components/widgets/CurrentWidget'
 
 export default {
-  components: { CharacterPanel, Widgets, CurrentWidget },
+  components: { CharacterPanel, WidgetPanel, CurrentWidget },
   data() {
     return {
       isSelected: true,

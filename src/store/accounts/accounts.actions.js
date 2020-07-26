@@ -40,8 +40,8 @@ export default {
   triggerRegisterAccountAction: ({ dispatch, state, commit }) => {
     if (state.accountNameToCreate === '') return
 
-    commit('setAccountNameToRegister', '')
     dispatch('registerAccount', state.accountNameToRegister)
+    commit('setAccountNameToRegister', '')
   },
 
   /**

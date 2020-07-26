@@ -21,7 +21,7 @@
     <div class="break-9" />
     <div class="split"/>
     <div class="break-9" />
-    <div class="margin flex-row">
+    <div @click="deleteAcc()" class="menu-button margin flex-row">
       <img
         class="img"
         src="@/assets/icons/exit.svg"
@@ -35,7 +35,7 @@
 <script>
 import LargeButton from '@/components/buttons/LargeButton'
 import WidgetShell from '@/components/widgets/widgets/mini/widgetShell'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   components: { WidgetShell, LargeButton },
@@ -44,6 +44,12 @@ export default {
       window: {
         width: 0
       }
+    }
+  },
+  methods: {
+    ...mapActions('accounts', ['deleteAccount']),
+    deleteAcc() {
+      this.deleteAccount(this.$route.params.accountId);
     }
   },
   computed: {
@@ -86,6 +92,9 @@ export default {
   .last-seen {
     padding-left: 7px;
     color: $black;
+  }
+  .menu-button {
+    cursor: pointer;
   }
 }
 </style>

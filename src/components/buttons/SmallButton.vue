@@ -1,13 +1,14 @@
 <template>
-  <div class="button" @click="$emit('clicked')">
-      {{text}}
+  <div :class="[color === 'white' ? 'white' : color === 'grey' ? 'grey' : 'white', 'button']" @click="$emit('clicked')">
+    {{text}}
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    text: String
+    text: String,
+    color: String
   }
 }
 </script>
@@ -18,10 +19,15 @@ export default {
 .button {
   cursor: pointer;
   color: $black;
-  background-color: $white;
   border-radius: 40px;
   padding: 10px 20px 10px 20px;
   text-align: center;
   font-size: 18px;
+}
+.white {
+  background-color: $white;
+}
+.grey {
+  background-color: $light-grey;
 }
 </style>
