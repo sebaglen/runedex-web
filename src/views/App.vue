@@ -3,7 +3,7 @@
     <character-panel class="character-panel-container"></character-panel>
     <widget-panel></widget-panel>
     <div v-on:click="select">
-      <current-widget :class="[isSelected ? 'isSelected' : '', 'widget-wrapper']"></current-widget>
+      <current-widget v-if="this.$route.params.accountId != 'new'" :class="[isSelected ? 'isSelected' : '', 'widget-wrapper']"></current-widget>
     </div>
   </div>
 </template>

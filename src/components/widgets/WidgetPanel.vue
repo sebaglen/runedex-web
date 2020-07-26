@@ -1,7 +1,7 @@
 <template>
-  <div class="panel">
-    <add-new-account v-if="addNewAccount" class="mini-widget-container"></add-new-account>
-    <widgets v-else class="mini-widget-container"></widgets>
+  <div>
+    <add-new-account v-if="addNewAccount"></add-new-account>
+    <widgets v-else></widgets>
   </div>
 </template>
 
@@ -24,9 +24,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
-.panel {
-  display: table;
-  height: 100%;
-  width: 65px;
-}
 </style>

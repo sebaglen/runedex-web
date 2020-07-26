@@ -59,11 +59,10 @@ export default {
 .outer {
   display: table;
   height: 100%;
-  width: 65px;
-  margin: 0 10px 0 10px;
+  width: 100%;
+  padding: 0 0 0 10px
 }
 .inner {
-  min-width: 285px;
   display: table-cell;
   vertical-align: middle;
 }
@@ -72,6 +71,7 @@ export default {
   width: 60px;
 }
 .split {
-  margin: 0 -10px 0 -10px;
+  width: 100%;
+  margin: 0 0 0 -10px;
 }
 </style>

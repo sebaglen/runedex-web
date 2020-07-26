@@ -7,20 +7,21 @@
       class="char-item"
       :character-name="account.id"
     ></select-character>
-    <router-link to="/app/new">
-      <add-new-character class="char-item"></add-new-character>
-    </router-link>
+    <select-character
+      :key="'new'"
+      class="char-item"
+      :character-name="'new'"
+    ></select-character>
   </div>
 </div>
 </template>
 
 <script>
-import SelectCharacter from '@/components/characterPanel/header/SelectCharacter'
-import AddNewCharacter from '@/components/characterPanel/header/AddNewCharacter'
 import { mapState } from 'vuex'
+import SelectCharacter from '@/components/characterPanel/header/SelectCharacter'
 
 export default {
-  components: { SelectCharacter, AddNewCharacter },
+  components: { SelectCharacter },
   computed: {
     ...mapState('accounts', ['accounts'])
   }
@@ -38,9 +39,5 @@ export default {
 .inner {
   display: table-cell;
   vertical-align: middle;
-}
-
-.char-item {
-  margin: 10px;
 }
 </style>
