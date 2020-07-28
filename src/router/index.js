@@ -64,7 +64,8 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "client-chunk-overview" */ '@/views/WidgetBrowser.vue'),
       meta: {
-        transition: "fade"
+        transition: "fade",
+        hideNavBar: true,
       }
     },
     {
