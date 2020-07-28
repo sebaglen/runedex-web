@@ -42,6 +42,7 @@ export default {
 }
 .page-wrapper {
   height: 100%;
+  width: 100%;
 }
 .widget-wrapper {
   background-color: $light-grey;

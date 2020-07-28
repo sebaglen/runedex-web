@@ -1,5 +1,5 @@
 <template>
-<div class="outer">
+<div class="page-wrapper">
   <div :class="['widgets']">
     <div class="margin noselect">
       <h2>{{ this.$route.params.accountId }}</h2>
@@ -106,7 +106,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
-.outer {
+.page-wrapper {
   display: table;
   height: 100%;
   width: 65px;
