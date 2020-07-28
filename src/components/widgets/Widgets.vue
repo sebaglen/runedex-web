@@ -1,41 +1,41 @@
 <template>
-<div class="page-wrapper">
-  <div :class="['widgets']">
-    <div class="margin noselect">
-      <h2>{{ this.$route.params.accountId }}</h2>
-      <div class="last-seen">
-        <p v-if="hasAccountData">Last seen: {{ getLastSeen }}</p>
-        <p v-else>Not yet synchronized, please log in to RuneLite.</p>
-      </div>
-    </div>
-    <div class="split"/>
-    <div v-if="isFetchingWidgets">Loading...</div>
-    <div v-else>
-      <awaiting-first-login class="margin" v-if="!hasAccountData"></awaiting-first-login>
-      <div v-else class="widget-container flex-row">
-        <widget-shell
-          v-for="widget in currentWidgets"
-          :key="widget.id"
-          :type="widget.type"
-          :unique-id="widget.id"
-        ></widget-shell>
-        <div class="browse-button margin" @click="openWidgetBrowser">
-          <large-button :text="'Browse widgets'"/>
+  <div class="page-wrapper">
+    <div :class="['widgets']">
+      <div class="margin noselect">
+        <h2>{{ this.$route.params.accountId }}</h2>
+        <div class="last-seen">
+          <p v-if="hasAccountData">Last seen: {{ getLastSeen }}</p>
+          <p v-else>Not yet synchronized, please log in to RuneLite.</p>
         </div>
       </div>
-    </div>
-    <div class="break-8" />
-    <div class="split"/>
-    <div class="break-8" />
-    <div @click="deleteAcc()" class="menu-button margin flex-row">
-      <img
-        class="img"
-        src="@/assets/icons/exit.svg"
-      />
-      <h3>Remove {{ this.$route.params.accountId }}</h3>
+      <div class="split" />
+      <div v-if="loading">Loading...</div>
+      <div v-else>
+        <awaiting-first-login
+          v-if="!hasAccountData"
+          class="margin"
+        ></awaiting-first-login>
+        <div v-else class="widget-container flex-row">
+          <widget-shell
+            v-for="widget in currentWidgets"
+            :key="widget.id"
+            :type="widget.type"
+            :unique-id="widget.id"
+          ></widget-shell>
+          <div class="browse-button margin" @click="openWidgetBrowser">
+            <large-button :text="'Browse widgets'" />
+          </div>
+        </div>
+      </div>
+      <div class="break-8" />
+      <div class="split" />
+      <div class="break-8" />
+      <div class="menu-button margin flex-row" @click="deleteAcc()">
+        <img class="img" src="@/assets/icons/exit.svg" />
+        <h3>Remove {{ this.$route.params.accountId }}</h3>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -56,31 +56,39 @@ export default {
   methods: {
     ...mapActions('accounts', ['deleteAccount']),
     deleteAcc() {
-      this.deleteAccount(this.$route.params.accountId);
-      this.$router.push({ name: 'app', params: { accountId: 'new' }})
+      this.deleteAccount(this.$route.params.accountId)
+      this.$router.push({ name: 'app', params: { accountId: 'new' } })
     },
     openWidgetBrowser() {
-      this.$router.push({ name: 'browse', params: this.$route.params})
+      this.$router.push({ name: 'browse', params: this.$route.params })
     }
   },
   computed: {
-    ...mapGetters('widgets', ['isFetchingWidgets']),
+    ...mapGetters('widgets', ['loading']),
     ...mapGetters('widgets', ['listWidgets']),
     ...mapState('accounts', ['accounts']),
     currentWidgets() {
       return this.listWidgets(this.$route.params.accountId)
     },
     hasAccountData() {
-      return this.accounts && this.accounts.some(el => el.id === this.$route.params.accountId && el.lastSeen);
+      return (
+        this.accounts &&
+        this.accounts.some(
+          el => el.id === this.$route.params.accountId && el.lastSeen
+        )
+      )
     },
     getLastSeen() {
-      const lastSeen = this.accounts && this.accounts.find(el => el.id === this.$route.params.accountId).lastSeen;
-      const interval = Date.now() - lastSeen;
+      const lastSeen =
+        this.accounts &&
+        this.accounts.find(el => el.id === this.$route.params.accountId)
+          .lastSeen
+      const interval = Date.now() - lastSeen
 
-      const seconds = (interval / 1000).toFixed(1);
-      const minutes = Math.floor((interval / (1000 * 60)).toFixed(1));
-      const hours = Math.floor((interval / (1000 * 60 * 60)).toFixed(1));
-      const days = Math.floor((interval / (1000 * 60 * 60 * 24)).toFixed(1));
+      const seconds = (interval / 1000).toFixed(1)
+      const minutes = Math.floor((interval / (1000 * 60)).toFixed(1))
+      const hours = Math.floor((interval / (1000 * 60 * 60)).toFixed(1))
+      const days = Math.floor((interval / (1000 * 60 * 60 * 24)).toFixed(1))
 
       if (seconds < 60) {
         if (seconds === 1) {

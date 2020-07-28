@@ -1,22 +1,23 @@
 <template>
   <div class="outer">
     <div class="inner">
-      <div class="loader"/>
-      <h2>{{getText}}...</h2>
+      <div class="loader" />
+      <h2>{{ getText }}...</h2>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import { isNil } from 'lodash'
 
 export default {
-  computed: { 
+  computed: {
     ...mapState('authentication', ['user']),
+    ...mapGetters('app', ['loading']),
     getText() {
       if (Math.floor(Math.random() * 5000) === 4999) {
-        return "Ouch, this could have been a Dragon Warhammer";
+        return 'Ouch, this could have been a Dragon Warhammer'
       }
       return this.texts[Math.floor(Math.random() * this.texts.length)]
     }
@@ -37,28 +38,44 @@ export default {
         this.$router.push(redirectUrl)
       },
       immediate: true
+    },
+    loading: {
+      handler(loading) {
+        if (loading === undefined) return
+
+        if (this.$route.query.redirectUrl === this.$route.path) {
+          this.$router.push('/')
+        }
+
+        const redirectUrl = loading
+          ? `/check-login?redirectUrl=${this.$route.query.redirectUrl}`
+          : this.$route.query.redirectUrl
+
+        this.$router.push(redirectUrl)
+      },
+      immediate: true
     }
   },
   data() {
     return {
       texts: [
-        "Tanning cowhides",
-        "Catching lobsters",
-        "Smashing sand crabs",
-        "Bursting dust devils",
-        "Buying gf",
-        "Blowing glass",
-        "Doubling money",
-        "Getting melleed by Jad while protecting range",
-        "Getting nerd logged at Olm",
-        "Planting snape grass",
-        "Losing hardcore status to a tree outside Draynor Manor",
-        "Mining blurite ore",
-        "Selling a thermonuclear kebab, 5gp",
-        "Getting music cape for the 7th time",
-        "Shoving dragon claws up Karils arse", // TODO: consider pg13 *insert laughing emoji here*
-        "Killing goblins with a meat tenderizer",
-        "Killing chickens with an Elder Maul",
+        'Tanning cowhides',
+        'Catching lobsters',
+        'Smashing sand crabs',
+        'Bursting dust devils',
+        'Buying gf',
+        'Blowing glass',
+        'Doubling money',
+        'Getting melleed by Jad while protecting range',
+        'Getting nerd logged at Olm',
+        'Planting snape grass',
+        'Losing hardcore status to a tree outside Draynor Manor',
+        'Mining blurite ore',
+        'Selling a thermonuclear kebab, 5gp',
+        'Getting music cape for the 7th time',
+        'Shoving dragon claws up Karils arse', // TODO: consider pg13 *insert laughing emoji here*
+        'Killing goblins with a meat tenderizer',
+        'Killing chickens with an Elder Maul'
       ]
     }
   }
