@@ -50,7 +50,7 @@ const router = new Router({
       }
     },
     {
-      path: '/app/:accountId?/:widgetType?/:widgetId?',
+      path: '/app/dex/:accountId?/:widgetType?/:widgetId?',
       name: 'app',
       component: () =>
         import(/* webpackChunkName: "client-chunk-overview" */ '@/views/App.vue'),
@@ -59,13 +59,22 @@ const router = new Router({
       }
     },
     {
-      path: '/news',
+      path: '/app/browse/:accountId?/:widgetType?/:widgetId?',
+      name: 'browse',
+      component: () =>
+        import(/* webpackChunkName: "client-chunk-overview" */ '@/views/WidgetBrowser.vue'),
+      meta: {
+        transition: "fade"
+      }
+    },
+    {
+      path: '/app/news',
       name: 'news',
       component: () =>
         import(/* webpackChunkName: "client-chunk-news" */ '@/views/News.vue')
     },
     {
-      path: '/watchlist',
+      path: '/app/watchlist',
       name: 'watchlist',
       component: () =>
         import(/* webpackChunkName: "client-chunk-watchlist" */ '@/views/Watchlist.vue')

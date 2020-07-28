@@ -3,12 +3,12 @@
     <div class="links">
       <nav class="nav-links">
         <div class="nav-item">
-          <router-link to="/app">
+          <router-link to="/app/dex">
             <rune-dex-router-item></rune-dex-router-item>
           </router-link>
         </div>
         <div class="nav-item">
-          <router-link to="/news">
+          <router-link to="/app/news">
             <news-router-item></news-router-item>
           </router-link>
         </div>

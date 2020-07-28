@@ -19,7 +19,9 @@
           :type="widget.type"
           :unique-id="widget.id"
         ></widget-shell>
-        <large-button class="browse-button margin" :text="'Browse widgets'"/>
+        <div class="browse-button margin" @click="openWidgetBrowser">
+          <large-button :text="'Browse widgets'"/>
+        </div>
       </div>
     </div>
     <div class="break-8" />
@@ -56,6 +58,9 @@ export default {
     deleteAcc() {
       this.deleteAccount(this.$route.params.accountId);
       this.$router.push({ name: 'app', params: { accountId: 'new' }})
+    },
+    openWidgetBrowser() {
+      this.$router.push({ name: 'browse', params: this.$route.params})
     }
   },
   computed: {

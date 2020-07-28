@@ -66,8 +66,7 @@ export default {
 body {
   margin: 0;
 
-  a {
-    font-weight: 500;
+  a {    
     text-decoration: none;
   }
 
