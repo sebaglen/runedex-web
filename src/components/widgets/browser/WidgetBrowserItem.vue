@@ -1,21 +1,26 @@
 <template>
   <div class="widget-browser-item-container flex-row">
     <div class="left-container">
-      <component class="widget" :is="type" :unique-id="uniqueId" />
-      <div @click="addWidget" class="add-button">
+      <component :is="widget.type" class="widget" />
+      <div class="add-button" @click="addWidget">
         <large-button :text="'Add widget'"/>
       </div>
     </div>
     <div class="right-container flex-column">
       <div>
-        <h3>{{type}}</h3>
+        <h3>{{widget.name}}</h3>
         <div class="break-8"></div>
-        <p>Monitor progress towards custom account goals. 
-          With this widget you can set yourself a goal, and monitor your progression towards that goal. 
-          Examples of progression can be quests, items or levels that your account needs before the goal is achieved.
+        <p>{{widget.description}}
         </p>
       </div>
-      <p class="permission-text">Requires permissions: <br/>Bank, Character, Quests</p>
+      <p class="permission-text">Requires permissions:</p>
+      <div class="flex-row">
+        <div class="flex-row" v-for="(permission, index) in widget.permissions" :key="permission">
+          <p>{{permission}}</p>
+          <p v-if="index < widget.permissions.length -1">,</p>
+        </div>
+      </div>
+
       <div @click="addWidget">
         <white-button :text="'Preview full widget'"/>
       </div>
@@ -35,12 +40,11 @@ export default {
     WhiteButton
   },
   props: {
-    type: String,
-    uniqueId: String
+    widget: Object,
   },
   methods: {
     addWidget() {
-      console.log('Add ' + this.uniqueId); //eslint-disable-line
+      console.log('Add ' + this.widget.type); //eslint-disable-line
     }
   }
 }
@@ -59,7 +63,7 @@ export default {
 .right-container {
   margin: 10px 10px 10px 5px;
   .permission-text {
-    margin-top: auto;
+    margin: auto 0 0 0;
   }
 }
 .widget {

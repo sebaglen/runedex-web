@@ -4,8 +4,9 @@ import Goal from './goalWidget'
 export default {
   name: 'Goal',
   type: 'goal',
-  description: `Set goals and track your progress towards them! 
-    Make a list of things you want to achieve, items you want to collect and xp you want to gain`,
+  description: `Monitor progress towards custom account goals. 
+    With this widget you can set yourself a goal, and monitor your progression towards that goal. 
+    Examples of progression can be quests, items or levels that your account needs before the goal is achieved.`,
   shortDescription: 'Set goals and track your progress',
   mini: MiniGoal,
   main: Goal,

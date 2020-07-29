@@ -4,8 +4,8 @@ import BankValue from './bankValueWidget'
 export default {
   name: 'Bank Value',
   type: 'bank-value',
-  description:
-    'Have total control of the value in your bank with this fantastic widget',
+  description: `Monitor daily, weekly or monthly changes in your bank value. Define a threshold, 
+    and get push notifications when items in your bank spike or drop past the set threshold.`,
   shortDescription: 'Banky spank me',
   mini: MiniBankValue,
   main: BankValue,

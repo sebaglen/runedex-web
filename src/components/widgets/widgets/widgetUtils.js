@@ -20,4 +20,6 @@ export const mainWidgetComponents = Object.values(availableWidgets).reduce(
 )
 export const getWidget = widgetType => availableWidgets[widgetType]
 
+export const listAllWidgets = availableWidgets
+
 export default availableWidgets

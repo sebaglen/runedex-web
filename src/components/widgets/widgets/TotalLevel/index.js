@@ -4,7 +4,8 @@ import TotalLevel from './totalLevelWidget'
 export default {
   name: 'Total Level',
   type: 'total-level',
-  description: `Track your total level over time like a boss. You can decide the interval yourself and stuff`,
+  description: `Monitor daily, weekly or monthly level progression.
+    With this widget you can keep track of all your XP gains.`,
   shortDescription: `Don't be whack, make sure you track`,
   mini: MiniTotalLevel,
   main: TotalLevel,

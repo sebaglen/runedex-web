@@ -22,9 +22,10 @@
       </div>
     </div>
     <div class="body">
-      <widget-browser-item 
-        :type="'goal'"
-        :unique-id="'Yy7cr2qD33fNfoX1W4Wn'"
+      <widget-browser-item
+        v-for="widget in getWidgets"
+        :key="widget.type"
+        :widget="widget"
       >
       </widget-browser-item>
     </div>
@@ -33,6 +34,7 @@
 
 <script>
 import WidgetBrowserItem from '@/components/widgets/browser/WidgetBrowserItem'
+import {listAllWidgets} from '../components/widgets/widgets/widgetUtils' // eslint-disable-line
 
 export default {
   components: { WidgetBrowserItem },
@@ -50,6 +52,11 @@ export default {
     },
     goBack() {
       this.$router.push({ name: 'app', params: this.$route.params})
+    }
+  },
+  computed: {
+    getWidgets() {
+      return listAllWidgets;
     }
   }
 }
