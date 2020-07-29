@@ -10,6 +10,7 @@ export default {
   mini: MiniTotalLevel,
   main: TotalLevel,
   permissions: ['character'],
+  searchTags: ['level', 'progression', 'xp', 'total'],
   // delaration of what kind of config this widget expects
   configStructure: {
     time: {

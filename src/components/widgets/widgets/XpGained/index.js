@@ -9,6 +9,7 @@ export default {
   mini: MiniXpGained,
   main: XpGained,
   permissions: ['character'],
+  searchTags: ['level', 'progression', 'xp'],
   // delaration of what kind of config this widget expects
   configStructure: {
     time: {

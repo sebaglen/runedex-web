@@ -10,5 +10,6 @@ export default {
   mini: MiniBankValue,
   main: BankValue,
   permissions: ['bank'],
+  searchTags: ['bank', 'value', 'ge', 'grand', 'exchange', 'items'],
   configStructure: {}
 }

@@ -17,7 +17,6 @@
           type="text"
           :value="searchTerm"
           @input="setSearchTerm($event.target.value)"
-          @keypress.enter="search()"
         />
       </div>
     </div>
@@ -40,15 +39,12 @@ export default {
   components: { WidgetBrowserItem },
   data() {
     return {
-      searchTerm: "",
+      searchTerm: '',
     }
   },
   methods: {
     setSearchTerm(term) {
       this.searchTerm = term;
-    },
-    search() {
-      console.log(this.searchTerm);
     },
     goBack() {
       this.$router.push({ name: 'app', params: this.$route.params})
@@ -56,7 +52,16 @@ export default {
   },
   computed: {
     getWidgets() {
-      return listAllWidgets;
+      const build = [];
+      Object.values(listAllWidgets).forEach(el => {
+        if (el.searchTags.includes(this.searchTerm)) {
+          build.push(el)
+        }
+      })
+      if (this.searchTerm === '') {
+        return listAllWidgets;
+      }
+      return build;
     }
   }
 }
