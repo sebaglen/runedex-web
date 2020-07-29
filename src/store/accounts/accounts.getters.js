@@ -2,6 +2,10 @@ import { find } from 'lodash'
 
 export default {
   /**
+   * Initial load of this module is in progress
+   */
+  loading: state => state.loading,
+  /**
    * Check if a account has deletion pending
    */
   isAccountDeletionPending: state => accountId =>

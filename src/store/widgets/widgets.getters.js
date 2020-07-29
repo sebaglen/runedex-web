@@ -22,5 +22,5 @@ export default {
   /**
    * Check if widget fetching is in progress for any accounts
    */
-  isFetchingWidgets: state => state.fetchingWidgetsForAccount.length > 0
+  loading: state => state.fetchingWidgetsForAccount.length > 0
 }

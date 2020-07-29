@@ -26,7 +26,7 @@ const router = new Router({
       component: Home,
       meta: {
         authNotRequired: true,
-        hideNavBar: true,
+        hideNavBar: true
       }
     },
     {
@@ -35,7 +35,7 @@ const router = new Router({
       component: CheckLogin,
       meta: {
         authNotRequired: true,
-        hideNavBar: true,
+        hideNavBar: true
       }
     },
     {
@@ -46,7 +46,7 @@ const router = new Router({
       meta: {
         authNotRequired: true,
         hideNavBar: true,
-        transition: "fade"
+        transition: 'fade'
       }
     },
     {
@@ -55,7 +55,7 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "client-chunk-overview" */ '@/views/App.vue'),
       meta: {
-        transition: "fade"
+        transition: 'fade'
       }
     },
     {
@@ -64,8 +64,8 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "client-chunk-overview" */ '@/views/WidgetBrowser.vue'),
       meta: {
-        transition: "fade",
-        hideNavBar: true,
+        transition: 'fade',
+        hideNavBar: true
       }
     },
     {
@@ -96,6 +96,10 @@ router.beforeEach((to, from, next) => {
     const path =
       store.state.authentication.user === null ? '/login' : '/check-login'
     return next(`${path}?redirectUrl=${to.path}`)
+  }
+
+  if (store.getters['app/loading']) {
+    return next(`/check-login?redirectUrl=${to.path}`)
   }
   next()
 })

@@ -1,4 +1,8 @@
 export default {
+  /* Initial loading */
+  startLoading: state => (state.loading = true),
+  finishLoading: state => (state.loading = false),
+
   /* Account input name */
   setAccountNameToRegister: (state, accountNameToRegister) =>
     (state.accountNameToRegister = accountNameToRegister),
