@@ -2,7 +2,7 @@
   <div class="widget-browser-item-container flex-row">
     <div class="left-container">
       <component :is="widget.type" class="widget" />
-      <div class="add-button" @click="addWidget">
+      <div class="add-button" @click="add">
         <large-button :text="'Add widget'"/>
       </div>
     </div>
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div @click="addWidget">
+      <div @click="preview">
         <white-button :text="'Preview full widget'"/>
       </div>
     </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { miniWidgetComponents } from '../widgets/widgetUtils'
 import LargeButton from '@/components/buttons/LargeButton'
 import WhiteButton from '@/components/buttons/WhiteButton'
@@ -43,8 +44,16 @@ export default {
     widget: Object,
   },
   methods: {
-    addWidget() {
-      console.log('Add ' + this.widget.type); //eslint-disable-line
+    ...mapActions('widgets', ['addWidget']),
+    add() {
+      this.addWidget({
+        accountId: this.$route.params.accountId,
+        type: this.widget.type
+      })
+      this.$router.push({ name: 'app', params: this.$route.params })
+    },
+    preview() {
+      // Preview
     }
   }
 }

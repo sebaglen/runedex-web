@@ -17,12 +17,10 @@
 
 <script>
 import { getWidget, miniWidgetComponents } from '../widgetUtils'
-import addNewWidget from './addNewWidget'
 
 export default {
   components: {
-    ...miniWidgetComponents,
-    addnew: addNewWidget
+    ...miniWidgetComponents
   },
   props: {
     type: String,
