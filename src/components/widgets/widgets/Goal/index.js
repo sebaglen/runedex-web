@@ -12,6 +12,7 @@ export default {
   main: Goal,
   permissions: ['bank', 'character', 'quest'],
   searchTags: ['goal', 'progress', 'progression'],
+  premium: false,
   // delaration of what kind of config this widget expects
   configStructure: {
     levels: {

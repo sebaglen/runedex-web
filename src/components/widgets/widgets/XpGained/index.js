@@ -10,6 +10,7 @@ export default {
   main: XpGained,
   permissions: ['character'],
   searchTags: ['level', 'progression', 'xp'],
+  premium: false,
   // delaration of what kind of config this widget expects
   configStructure: {
     time: {

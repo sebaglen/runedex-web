@@ -11,6 +11,7 @@ export default {
   main: TotalLevel,
   permissions: ['character'],
   searchTags: ['level', 'progression', 'xp', 'total'],
+  premium: false,
   // delaration of what kind of config this widget expects
   configStructure: {
     time: {
