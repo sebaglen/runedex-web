@@ -41,7 +41,7 @@ export default {
   height: 130px;
   overflow: hidden;
   border-radius: 10px;
-  background-color: $light-grey;
+  border: 2px solid $light-grey;
   text-align: center;
   font-size: 0.8em;
   margin: 8px 0 0 8px;
