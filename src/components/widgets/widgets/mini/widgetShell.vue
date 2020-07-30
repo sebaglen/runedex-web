@@ -35,10 +35,10 @@ export default {
 <style lang="scss" scoped>
 @import '@/theme/variables.scss';
 .widget {
-  min-width: 130px;
-  min-height: 130px;
-  width: 130px;
-  height: 130px;
+  min-width: 126px;
+  min-height: 126px;
+  width: 126px;
+  height: 126px;
   overflow: hidden;
   border-radius: 10px;
   border: 2px solid $light-grey;
