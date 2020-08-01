@@ -13,34 +13,47 @@
     </div>
     <div class="content">
       <div class="section">
-        <div class="section-container">content</div>
+        <div class="section-container">
+          <div class="section-title">Dont miss out next time items crash on the GE</div>
+          <p>You can ask RuneDex to automatically send push notifications to your phone or desktop when items you own crash or spike on the Grand Exchange. Never miss another market crash again while at school or work</p>
+        </div>
       </div>
-      <div class="section contrast">
-        <div class="section-container">content</div>
+      <div class="contrast">
+        <div class="section">
+          <div class="section-container">
+            <div class="section-title right-align">Monitor your own progression goals</div>
+            <p class="right-align">RuneDex can keep track of your levels, quests completions, items you own and much more. Build a unique platform to track all the goals you wish to achive, and view your current progression towards those goals. Maybe you wanna know how far away you are from starting the barrows grind on your new Ironman?</p>
+          </div>
+        </div>
       </div>
       <div class="section">
-        <div class="section-container">content</div>
-      </div>
-      <div class="section contrast">
         <div class="section-container">
-          <div class="title">Everything is taken care of while you are out, grinding real life.</div>
-          <p class="description">RuneDex is currently still in development, but we would love to have you as a Alpha tester! Did we mention its totally free?</p>
-          <div class="flex-row">
-            <img
-              class="img"
-              src="@/assets/icons/sword.svg"
-            />
-            <div class="sub-title">Ready to elevate your osrs experience?</div>
-            <img
-              class="img flip"
-              src="@/assets/icons/sword.svg"
-            />
+          <div class="section-title">Get inspiration on what to do next!</div>
+          <p>Ever wondered if there are any quests you have the level and item requirements banked for, but have not yet started? Get tailored progression tips for all your accounts, its easy!</p>
+        </div>
+      </div>
+      <div class="contrast">
+        <div class="section">
+          <div class="section-container">
+            <div class="title">Everything is taken care of while you are out, grinding real life.</div>
+            <p class="description">RuneDex is currently still in development, but we would love to have you as a Alpha tester! Did we mention its totally free?</p>
+            <div class="flex-row">
+              <img
+                class="img"
+                src="@/assets/icons/sword.svg"
+              />
+              <div class="sub-title">Ready to elevate your osrs experience?</div>
+              <img
+                class="img flip"
+                src="@/assets/icons/sword.svg"
+              />
+            </div>
+            <div @click="logInBottom()">
+              <Button class="button" :text="'Open RuneDex'"></Button>
+              <div :class="[isBottom ? 'expand-bottom' : '', 'expand-container-bottom']"></div>
+            </div>
+            <div class="pb" />
           </div>
-          <div @click="logInBottom()">
-            <Button class="button" :text="'Open RuneDex'"></Button>
-            <div :class="[isBottom ? 'expand-bottom' : '', 'expand-container-bottom']"></div>
-          </div>
-          <div class="pb" />
         </div>
       </div>
     </div>
@@ -216,11 +229,28 @@ export default {
     text-align: left;
     .section {
       min-height: 600px;
+      display: table;
+      margin: auto;
       @media only screen and (max-width: 690px) { // Desktop-slim or Tablet
         min-height: 750px;
       }
       .section-container {
         margin: auto;
+        display: table-cell;
+        vertical-align: middle;
+        p {
+          max-width: 600px;
+          font-size: 24px;
+          padding: 0 25px 0 25px;
+        }
+        .section-title {
+          max-width: 600px;
+          font-size: 50px;
+          padding: 0 25px 10px 25px;
+        }
+        .right-align {
+          text-align: right;
+        }
 
         width: 760px;
         @media only screen and (max-width: 920px) { // Dekstop
