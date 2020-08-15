@@ -80,7 +80,7 @@ const router = new Router({
       component: () =>
         import(/* webpackChunkName: "client-chunk-watchlist" */ '@/views/Watchlist.vue')
     },
-    { path: '*', redirect: '/' }
+    { path: '*', redirect: '/home' }
   ]
 })
 
