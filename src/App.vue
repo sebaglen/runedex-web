@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     
-    <!--div v-if="!this.$route.meta.hideNavBar">
+    <div v-if="!this.$route.meta.hideNavBar">
       <nav-bar></nav-bar>
       <div class="navbar-padding"></div>
       <mobile-nav-bar></mobile-nav-bar>
-    </div-->
+    </div>
 
     <transition :name="transitionName">
       <router-view :class="[!this.$route.meta.hideNavBar ? 'router' : '']" />
