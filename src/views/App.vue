@@ -5,11 +5,6 @@
     v-on:touchend="dragEnd"
     v-on:touchmove="drag"
   >
-    <!--character-panel class="character-panel-container"></character-panel>
-    <widget-panel></widget-panel>
-    <div v-on:click="select">
-      <current-widget v-if="this.$route.params.accountId != 'new'" :class="[isSelected ? 'isSelected' : '', 'widget-wrapper']"></current-widget>
-    </div-->
     <div id="scroll" v-bind:style="{ transform: scrollState }" :class="[!active ? 'transition' : '', 'scroll-container flex-row']">
       <div class="left flex-row">
         <character-panel class="character-panel-container"></character-panel>
@@ -28,7 +23,7 @@ import WidgetPanel from '@/components/widgets/WidgetPanel'
 import CurrentWidget from '@/components/widgets/CurrentWidget'
 
 export default {
-  components: { CharacterPanel, WidgetPanel, CurrentWidget }, // eslint-disable-line
+  components: { CharacterPanel, WidgetPanel, CurrentWidget },
   data() {
     return {
       active: false,
