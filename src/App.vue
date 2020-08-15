@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     
-    <div v-if="!this.$route.meta.hideNavBar">
+    <!--div v-if="!this.$route.meta.hideNavBar">
       <nav-bar></nav-bar>
       <div class="navbar-padding"></div>
       <mobile-nav-bar></mobile-nav-bar>
-    </div>
+    </div-->
 
     <transition :name="transitionName">
       <router-view :class="[!this.$route.meta.hideNavBar ? 'router' : '']" />
@@ -37,7 +37,7 @@ import AppleAddToHomeScreenModal from '@/components/AppleAddToHomeScreenModal'
 import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-  components: { NavBar, MobileNavBar, NewContentAvailableToastr, AppleAddToHomeScreenModal },
+  components: { NavBar, MobileNavBar, NewContentAvailableToastr, AppleAddToHomeScreenModal }, // eslint-disable-line
   computed: {
     ...mapGetters('app', ['newContentAvailable']),
     ...mapState('app', ['showAddToHomeScreenModalForApple', 'refreshingApp']),
