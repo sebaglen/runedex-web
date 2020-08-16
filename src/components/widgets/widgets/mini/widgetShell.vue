@@ -9,7 +9,7 @@
       }
     }"
   >
-    <div class="widget">
+    <div class="widget" @click="maximize">
       <component :is="type" :unique-id="uniqueId" />
     </div>
   </router-link>
@@ -27,7 +27,10 @@ export default {
     uniqueId: String
   },
   methods: {
-    getWidget
+    getWidget,
+    maximize() {
+      this.$emit('maximize');
+    },
   }
 }
 </script>
@@ -44,7 +47,6 @@ export default {
   border: 2px solid $light-grey;
   text-align: center;
   font-size: 0.8em;
-  margin: 8px 0 0 8px;
   cursor: pointer;
 }
 </style>

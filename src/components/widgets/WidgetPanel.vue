@@ -1,7 +1,7 @@
 <template>
   <div>
     <add-new-account v-if="addNewAccount"></add-new-account>
-    <widgets v-else></widgets>
+    <widgets @maximize="maximize" v-else></widgets>
   </div>
 </template>
 
@@ -17,6 +17,11 @@ export default {
         return true;
       }
       return false;
+    }
+  },
+  methods: {
+    maximize() {
+      this.$emit('maximize');
     }
   }
 }

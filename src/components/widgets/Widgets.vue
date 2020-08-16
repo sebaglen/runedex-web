@@ -17,6 +17,8 @@
         ></awaiting-first-login>
         <div v-else class="widget-container flex-row">
           <widget-shell
+            class="widget-item"
+            @maximize="maximize"
             v-for="widget in currentWidgets"
             :key="widget.id"
             :type="widget.type"
@@ -61,7 +63,11 @@ export default {
     },
     openWidgetBrowser() {
       this.$router.push({ name: 'browse', params: this.$route.params })
-    }
+    },
+    maximize() {
+      console.log("max")
+      this.$emit('maximize');
+    },
   },
   computed: {
     ...mapGetters('widgets', ['loading']),
@@ -139,6 +145,9 @@ export default {
   .widget-container {
     overflow: hidden;
     flex-wrap: wrap;
+    .widget-item {
+      margin: 8px 0 0 8px;
+    }
     .browse-button {
       width: 100%;
       margin-top: 10px;

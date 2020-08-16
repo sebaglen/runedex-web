@@ -8,10 +8,10 @@
     <div id="scroll" v-bind:style="{ transform: scrollState }" :class="[!active ? 'transition' : '', 'scroll-container flex-row']">
       <div class="left flex-row">
         <character-panel class="character-panel-container"></character-panel>
-        <widget-panel></widget-panel>
+        <widget-panel @maximize="maximize"></widget-panel>
       </div>
       <div class="right">
-        <current-widget v-if="this.$route.params.accountId !== 'new'" v-bind:style="{ background: fadeState, height: '100%'  }"></current-widget>
+        <current-widget v-if="this.$route.params.accountId !== 'new'" v-bind:style="{ background: fadeState, height: '100%' }"></current-widget>
       </div>
     </div>
   </div>
@@ -34,11 +34,11 @@ export default {
     }
   },
   methods: {
-    minimize() {
+    maximize() {
       this.currentX = (window.innerWidth - 50) * -1
       this.xOffset = this.currentX;
     },
-    maximize() {
+    minimize() {
       this.currentX = 0;
       this.xOffset = this.currentX;
     },
